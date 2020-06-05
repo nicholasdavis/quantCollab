@@ -1,0 +1,175 @@
+Collaboration Dynamics
+
+Collaboration Type: Follow the Leader Collaboration
+Collaboration Score: 50.0%
+
+Player: Ali
+Collaborator Type: Leader
+New Ideas Generated: 7
+New Ideas Accepted: 1
+New Ideas Rejected: -1
+Turns Dedicated to Your Ideas: 6
+Lines dedicated to Your Ideas: 7
+Turns Per Idea: 1.0
+Lines Per Idea: 1.2
+Lines Adding to New Ideas: 0
+
+Player: Nick
+Collaborator Type: Follower
+New Ideas Generated: 0
+New Ideas Accepted: 6
+New Ideas Rejected: 1
+Turns Dedicated to Your Idea: 2
+Lines Dedicatred to your Idea: 2
+Turns Per Idea: 2.0
+Lines Per Idea: 1.0
+Lines Adding to New Ideas: 7
+
+Player Stats
+
+Player: Ali
+# of Lines: 8
+Average line length: 369
+# of near contributions: 1
+# of similar contributions: 2
+# of couplings initiated: 1
+# of decouplings initiated: 6
+# of patterns initiated: 1
+# of patterns ended: 6
+Avg. time per turn: 5.9s
+Avg. drawing time: 1.2s
+Total drawing time: 8.3s
+Avg. thinking time: 4.7s
+Total thinking time: 32.8s
+# of fluid lines: 6
+
+Player: Nick
+# of Lines: 8
+Average line length: 448
+# of near contributions: 7
+# of similar contributions: 2
+# of couplings initiated: 6
+# of decouplings initiated: 0
+# of patterns initiated: 6
+# of patterns ended: 0
+Avg. time per turn: 2.8s
+Avg. drawing time: 1.7s
+Total drawing time: 12.2s
+Avg. thinking time: 1.1s
+Total thinking time: 7.5s
+# of fluid lines: 7
+
+Interaction Dynamics
+The total number of lines is: 16
+The total time elapsed: 1:01
+The total number of similar lines is: 4
+The total number of near lines is: 8
+# of interaction couplings: 7
+Tightly coupled interactions: 6
+Percent of interactions coupled: 57.1%
+Average turns per coupling: 1.1428571428571428
+Longest interaction coupling in turns: 2
+The average number of similar lines per coupling is: 0.2857142857142857
+# of patterns: 4
+Average turns per pattern: 1
+Dominant Player: Nick
+Percent of lines by dominant player: 54.9%
+Time spent in stats screen: undefineds
+Number of times stats screen active: undefined
+
+Interaction Coupling 0
+Num Turns: 2
+Avg Line Length: 652
+Total Line Length: 1304
+Total Time: 28.1s
+Num Similar Lines: 2
+Area Covered: 88008
+Quadrant Location: Top Right
+Percent Fluid Interactions: 50.0%
+Dominant Player: Ali
+Percent Dominant: 73.4%
+Initiated By: Ali
+Decoupled By: Ali
+
+Interaction Coupling 1
+Num Turns: 1
+Avg Line Length: 554
+Total Line Length: 1109
+Total Time: 4.8s
+Num Similar Lines: 1
+Area Covered: 127440
+Quadrant Location: Top Right
+Percent Fluid Interactions: 100.0%
+Dominant Player: Nick
+Percent Dominant: 100.0%
+Initiated By: Nick
+Decoupled By: Ali
+
+Interaction Coupling 2
+Num Turns: 1
+Avg Line Length: 206
+Total Line Length: 206
+Total Time: 2.7s
+Num Similar Lines: 1
+Area Covered: 3016
+Quadrant Location: Top Right
+Percent Fluid Interactions: 100.0%
+Dominant Player: Nick
+Percent Dominant: 100.0%
+Initiated By: Nick
+Decoupled By: Ali
+
+Interaction Coupling 3
+Num Turns: 1
+Avg Line Length: 573
+Total Line Length: 573
+Total Time: 3.5s
+Num Similar Lines: 1
+Area Covered: 35820
+Quadrant Location: Top Right
+Percent Fluid Interactions: 100.0%
+Dominant Player: Nick
+Percent Dominant: 100.0%
+Initiated By: Nick
+Decoupled By: Ali
+
+Interaction Coupling 4
+Num Turns: 1
+Avg Line Length: 273
+Total Line Length: 273
+Total Time: 1.1s
+Num Similar Lines: 1
+Area Covered: 8877
+Quadrant Location: Top Left
+Percent Fluid Interactions: 100.0%
+Dominant Player: Nick
+Percent Dominant: 100.0%
+Initiated By: Nick
+Decoupled By: Ali
+
+Interaction Coupling 5
+Num Turns: 1
+Avg Line Length: 515
+Total Line Length: 515
+Total Time: 3.5s
+Num Similar Lines: 1
+Area Covered: 5576
+Quadrant Location: Top Right
+Percent Fluid Interactions: 100.0%
+Dominant Player: Nick
+Percent Dominant: 100.0%
+Initiated By: Nick
+Decoupled By: Ali
+
+Interaction Coupling 6
+Num Turns: 1
+Avg Line Length: 563
+Total Line Length: 563
+Total Time: 2.2s
+Num Similar Lines: 1
+Area Covered: 6970
+Quadrant Location: Top Left
+Percent Fluid Interactions: 100.0%
+Dominant Player: Nick
+Percent Dominant: 100.0%
+Initiated By: Nick

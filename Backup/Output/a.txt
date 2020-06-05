@@ -1,0 +1,61 @@
+Player: a
+# of Lines: 2
+Average line length: 250
+# of near contributions: 1
+# of similar contributions: 0
+# of couplings initiated: 1
+# of decouplings initiated: 0
+# of patterns initiated: 1
+# of patterns ended: 0
+Avg. time per turn: 0.7s
+Avg. drawing time: 0.3s
+Total drawing time: 0.3s
+Avg. thinking time: 0.4s
+Total thinking time: 0.4s
+# of fluid lines: 1
+
+Player: a
+# of Lines: 1
+Average line length: 338
+# of near contributions: 1
+# of similar contributions: 0
+# of couplings initiated: 0
+# of decouplings initiated: 0
+# of patterns initiated: 0
+# of patterns ended: 0
+Avg. time per turn: 0.6s
+Avg. drawing time: 0.2s
+Total drawing time: 0.2s
+Avg. thinking time: 0.3s
+Total thinking time: 0.3s
+# of fluid lines: 1
+
+Collaboration Statistics
+The total number of lines is: 3
+The total time elapsed: 0:01
+The total number of similar lines is: 0
+The total number of near lines is: 2
+# of interaction couplings: 1
+Percent of interactions coupled: 100.0%
+Average turns per coupling: 1
+Longest interaction coupling in turns: 1
+The average number of similar lines per coupling is: 0
+# of patterns: 0
+Average turns per pattern: NaN
+Dominant Player: a
+Percent of lines by dominant player: 59.4%
+Time spent in stats screen: undefineds
+Number of times stats screen active: undefined
+
+Interaction Coupling 0
+Num Turns: 1
+Avg Line Length: 231
+Total Line Length: 231
+Total Time: 0.7s
+Num Similar Lines: 1
+Area Covered: 12470
+Quadrant Location: Top Left
+Percent Fluid Interactions: 100.0%
+Dominant Player: a
+Percent Dominant: 100.0%
+Initiated By: a

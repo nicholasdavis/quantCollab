@@ -1,0 +1,95 @@
+Collaboration Type: Balanced Collaboration
+Player: Tom
+Drawing Offers: 1
+Offers Accepted: 1
+Offers Rejected: 0
+Turns Mimicked: 1
+Turns Based on Offers: 2
+Lines Based on Offers: 2
+Avg Turns Per Accepted Offer: 2.0
+Average Lines Per Accepted Offer: 1.0
+Player: Jerry
+Drawing Offers: 1
+Offers Accepted: 1
+Offers Rejected: 0
+Turns Mimicked: 1
+Turns Based on Offers: 2
+Lines Based on Offers: 2
+Avg Turns Per Accepted Offer: 2.0
+Average Lines Per Accepted Offer: 1.0
+
+Player: Tom
+# of Lines: 3
+Average line length: 114
+# of near contributions: 2
+# of similar contributions: 1
+# of couplings initiated: 1
+# of decouplings initiated: 0
+# of patterns initiated: 1
+# of patterns ended: 0
+Avg. time per turn: 2.4s
+Avg. drawing time: 0.2s
+Total drawing time: 0.5s
+Avg. thinking time: 1.7s
+Total thinking time: 4.3s
+# of fluid lines: 2
+
+Player: Jerry
+# of Lines: 3
+Average line length: 141
+# of near contributions: 2
+# of similar contributions: 1
+# of couplings initiated: 1
+# of decouplings initiated: 1
+# of patterns initiated: 1
+# of patterns ended: 1
+Avg. time per turn: 2.0s
+Avg. drawing time: 0.3s
+Total drawing time: 0.8s
+Avg. thinking time: 2.0s
+Total thinking time: 5.1s
+# of fluid lines: 3
+
+Collaboration Statistics
+The total number of lines is: 6
+The total time elapsed: 0:11
+The total number of similar lines is: 2
+The total number of near lines is: 4
+# of interaction couplings: 2
+Percent of interactions coupled: 80.0%
+Average turns per coupling: 2
+Longest interaction coupling in turns: 2
+The average number of similar lines per coupling is: 1
+# of patterns: 2
+Average turns per pattern: 1
+Dominant Player: Jerry
+Percent of lines by dominant player: 69.9%
+Time spent in stats screen: 2.437s
+Number of times stats screen active: 1
+
+Interaction Coupling 0
+Num Turns: 2
+Avg Line Length: 62
+Total Line Length: 124
+Total Time: 3.6s
+Num Similar Lines: 2
+Area Covered: 3055
+Quadrant Location: Top Left
+Percent Fluid Interactions: 100.0%
+Dominant Player: Tom
+Percent Dominant: 59.5%
+Initiated By: Jerry
+Decoupled By: Jerry
+
+Interaction Coupling 1
+Num Turns: 2
+Avg Line Length: 113
+Total Line Length: 226
+Total Time: 4.8s
+Num Similar Lines: 2
+Area Covered: 10710
+Quadrant Location: Top Right
+Percent Fluid Interactions: 100.0%
+Dominant Player: Jerry
+Percent Dominant: 52.6%
+Initiated By: Tom

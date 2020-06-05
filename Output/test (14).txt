@@ -1,0 +1,41 @@
+Player: Tom
+# of Lines: 3
+Average line length: 200
+# of near contributions: 2
+# of similar contributions: 1
+# of couplings initiated: 1
+# of decouplings initiated: 0
+# of patterns initiated: 1
+# of patterns ended: 0
+Avg. time per turn: 0.7s
+Avg. drawing time: 0.2s
+Total drawing time: 0.5s
+Avg. thinking time: 0.3s
+Total thinking time: 0.8s
+# of fluid lines: 2
+Player: Jerry
+# of Lines: 3
+Average line length: 163
+# of near contributions: 3
+# of similar contributions: 2
+# of couplings initiated: 0
+# of decouplings initiated: 0
+# of patterns initiated: 0
+# of patterns ended: 0
+Avg. time per turn: 0.7s
+Avg. drawing time: 0.3s
+Total drawing time: 0.8s
+Avg. thinking time: 0.5s
+Total thinking time: 1.3s
+# of fluid lines: 3
+Collaboration Statistics
+The total number of lines is: 6
+The total time elapsed: 0:03
+The total number of similar lines is: 3
+The total number of near lines is: 5
+# of interaction couplings: 1
+Average turns per coupling: 4
+Longest interaction coupling in turns: 4
+The average number of similar lines per coupling is: 2
+# of patterns: 1
+Average turns per pattern: 2

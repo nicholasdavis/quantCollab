@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+    <style type="text/css">
+#container {height: 100%; width:100%; font-size: 16px;}
+#left, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 16px;}
+#left {width: 45%;}
+#right {width: 45%;}
+#header{height: 100%; width:20%;font-size: 20px; padding: 10px;}
+.buttons{float:right; width: 30%; padding:10px;}
+#headerContainer{height:100%; width: 100%; padding:10px; font-size: 16px;}
+#headerLeft, #headerMiddle, #headerRight{display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 16px;}}
+#headerLeft{width:70%;}
+#headerMiddle{width:30%;}
+#collaborationType{font-size: 16px;}
+
+.line {
+    fill: none;
+    stroke: #ffab00;
+    stroke-width: 3;
+}
+  
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+/* Style the dots by assigning a fill and stroke */
+.dot {
+    fill: #ffab00;
+    stroke: #fff;
+}
+  
+  .focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+
+</style>
+  </head>
+  <body data-rsssl=1>
+    <script src="lib/jquery-3.5.0.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+
+
+    <div id="headerContainer">
+      <button id="statButton" class="btn btn-primary">Statistics</button>
+      <button id="saveButton" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Start New Session
+</button>
+      <button id="showLinesButton" class="btn btn-primary">Show Lines</button>
+
+      <b id="playerName"> Click start new session to begin</b>
+    </div>
+
+
+
+<div class="w3-container">
+  
+
+  <div id="id01" class="w3-modal" >
+    <div class="w3-modal-content">
+      <div class="w3-container" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
+        <span id="closeButton" class="w3-button w3-display-topright">&times;</span>
+        <div class="modal-body">
+        <div role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        </li>
+                        <li role="presentation" class="active" ><a href="#collaborationDynamicsTab" aria-controls="colaborationDynamicsTab" role="tab" data-toggle="tab">Collaboration Dynamics</a>
+
+                        </li>
+
+                        <li role="presentation"  ><a href="#interactionDynamicsTab" aria-controls="interactionDynamicsTab" role="tab" data-toggle="tab">Interaction Dynamics</a>
+
+                        </li>
+                        <li role="presentation" ><a href="#uploadTab" aria-controls="uploadTab" role="tab" data-toggle="tab">Player Data</a>
+
+                        </li>
+                        
+                        <li role="presentation"><a href="#interactionTab" aria-controls="browseTab" role="tab" data-toggle="tab">Interaction Couplings</a>
+
+
+                        <li role="presentation"><a id = "chartTab" href="#chartsTab" aria-controls="browseTab" role="tab" data-toggle="tab">Charts</a>
+
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel"  class="tab-pane" id="uploadTab">
+                          <div id = "container">
+                            <div id="left"> 
+                              <b id="player1Name">some text</b>
+                              <p id="player1Lines">some text</p>
+                              <p id="plyaer1AverageLine">some text</p>
+                              <p id="player1AvgTurnTime">some text</p>
+                              <p id="player1AvgDrawingTime">some text</p>
+                              <p id="player1AvgThinkingTime">some text</p>
+                              <p id="player1TotalDrawingTime">some text</p>
+                              <p id="player1TotalThinkingTime">some text</p>
+                              <p id="player1numberNear">some text</p>
+                              <p id="player1numberSimilar">some text</p>
+                              <p id="player1initiateCoupling">some text</p>
+                              <p id="player1Decouplings">some text</p>
+                              <p id="player1PatternInitiate">some text</p>
+                              <p id="player1PatternDecouple">some text</p>
+                              <p id="player1NumFluidLines">some text</p>
+
+
+                            </div>
+                            <div id="right"> 
+                              <b id="player2Name">some text</b>
+                              <p id="player2Lines">some text</p>
+                              <p id="plyaer2AverageLine">some text</p>
+                              <p id="player2AvgTurnTime">some text</p>
+                              <p id="player2AvgDrawingTime">some text</p>
+                              <p id="player2AvgThinkingTime">some text</p>
+                              <p id="player2TotalDrawingTime">some text</p>
+                              <p id="player2TotalThinkingTime">some text</p>
+                              <p id="player2numberNear">some text</p>
+                              <p id="player2numberSimilar">some text</p>
+                              <p id="player2initiateCoupling">some text</p>
+                              <p id="player2Decouplings">some text</p>
+                              <p id="player2PatternInitiate">some text</p>
+                              <p id="player2PatternDecouple">some text</p>
+                              <p id="player2NumFluidLines">some text</p>
+
+                            </div>
+                          </div>
+
+                          
+
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="interactionDynamicsTab">
+                          <b>Collaboration Statistics</b>
+                          <p id ="totalLines">Some text.</p>
+                          <p id ="totalTime">Some text.</p>
+                          <p id ="totalSimilarLines">Some text.</p>
+                          <p id ="totalNearLines">Some text.</p>
+                          <p id ="interactionCoupling">Some text.</p>
+                          <p id ="numStructuralCoupling">Some text.</p>
+                          <p id ="percentCoupled">Some text.</p>
+                          <p id ="avgTurnPerCoupling">Some text.</p>
+                          <p id ="longestCoupling">Some text.</p>
+                          <p id ="avgSimilarPerCoupling">Some text.</p>
+                          <p id ="numberPatterns">Some text.</p>
+                          <p id ="avgTurnPerPattern">Some text.</p>
+                          <p id ="dominantPlayer">Some text.</p>
+                          <p id ="dominantPercent">Some text.</p>
+
+
+
+                        </div>
+                         <div role="tabpanel" class="tab-pane" id="interactionTab">
+                          <p id="interactionText">some text</p>
+                        </div>
+
+
+                        <div role="tabpanel" class="tab-pane active" id="collaborationDynamicsTab">
+                          <b id="collaborationType">some text</b>
+
+                        <div id = "container">
+                            <div id="left"> 
+                              <b id="player1Name2">some text</b>
+                              <p id="player1Offers">some text</p>
+                              <p id="player1OffersAccepted">some text</p>
+                              <p id="player1OffersRejected">some text</p>
+                              <p id="player1TurnsMimicked">some text</p>
+                              <p id="player1CoupledTurnBasedOnOffer">some text</p>
+                              <p id="player1AvgCoupleFounded">some text</p>
+
+                            </div>
+                            <div id="right"> 
+                              <b id="player2Name2">some text</b>
+                              <p id="player2Offers">some text</p>
+                              <p id="player2OffersAccepted">some text</p>
+                              <p id="player2OffersRejected">some text</p>
+                              <p id="player2TurnsMimicked">some text</p>
+                              <p id="player2CoupledTurnBasedOnOffer">some text</p>
+                              <p id="player2AvgCoupleFounded">some text</p>
+
+                            </div>
+                          </div>
+
+
+                        </div>
+
+
+                        <div role="tabpanel" class="tab-pane" id="chartsTab">
+                          <div id="distanceChart"></div>
+                          <div id="lineLengthChart"></div>
+                          <div id="intCoupleChart"></div>
+                          <div id="my_dataviz"></div>
+
+                        </div>
+
+
+
+
+                    </div>
+                  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter Session Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="player1NameInput">Player 1 Name:</label>
+              <input type="text" class="form-control" id="player1NameInput" placeholder="Enter player 1 name">
+            </div>
+            <div class="form-group">
+              <label for="player2NameInput">Player 2 Name:</label>
+              <input type="text" class="form-control" id="player2NameInput" aria-describedby="emailHelp"placeholder="Enter player 2 name">
+            </div>
+            <div class="form-group">
+              <label for="sessionIDInput">Session ID:</label>
+              <input type="text" class="form-control" id="sessionIDInput" aria-describedby="emailHelp" placeholder="Session ID">
+            </div>                    
+              <label for="cars">Choose a Drawing Type:</label>
+
+              <select id="drawingTypeInput">
+                <option value="singleLine">Single Line Turns</option>
+                <option value="multiLine">Multi Line Turns</option>
+              </select>
+  
+</body>
+</html>
+
+
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="submitButton" data-dismiss="modal" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+     <canvas id="canvas" style="border:1px solid #000000;" width="900" height="900"></canvas>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="charts.js"></script>
+    <script src="interactionCoupling.js"></script>
+    <script src="save.js"></script>
+    <script src="display.js"></script>
+    <script src="turn.js"></script>
+    <script src="analyzer.js"></script>
+    <script src="example.js"></script>
+    <script src="Player.js"></script>
+    <script src="point.js"></script>
+    <script src="line.js"></script>
+    <script src="sketch.js"></script>
+
+  </body>
+</html>      

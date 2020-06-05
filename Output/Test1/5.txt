@@ -1,0 +1,119 @@
+Collaboration Dynamics
+
+Collaboration Type: Dominant Collaboration
+Collaboration Score: 64.3%
+
+Player: Ali
+Collaborator Type: Dominant
+New Ideas Generated: 4
+New Ideas Accepted: 1
+New Ideas Rejected: 2
+Turns Dedicated to Your Ideas: 3
+Lines dedicated to Your Ideas: 8
+Turns Per Idea: 1.5
+Lines Per Idea: 2.7
+Lines Adding to New Ideas: 4
+
+Player: Nick
+Collaborator Type: Isolated
+New Ideas Generated: 3
+New Ideas Accepted: 2
+New Ideas Rejected: 2
+Turns Dedicated to Your Idea: 3
+Lines Dedicatred to your Idea: 6
+Turns Per Idea: 3.0
+Lines Per Idea: 2.0
+Lines Adding to New Ideas: 3
+
+Player Stats
+
+Player: Ali
+# of Lines: 15
+Average line length: 179
+# of near contributions: 3
+# of similar contributions: 2
+# of couplings initiated: 1
+# of decouplings initiated: 0
+# of patterns initiated: 1
+# of patterns ended: 0
+Avg. time per turn: 12.7s
+Avg. drawing time: 1.6s
+Total drawing time: 9.6s
+Avg. thinking time: 11.1s
+Total thinking time: 66.7s
+# of fluid lines: 5
+
+Player: Nick
+# of Lines: 15
+Average line length: 235
+# of near contributions: 3
+# of similar contributions: 3
+# of couplings initiated: 2
+# of decouplings initiated: 2
+# of patterns initiated: 2
+# of patterns ended: 2
+Avg. time per turn: 5.4s
+Avg. drawing time: 2.2s
+Total drawing time: 13.1s
+Avg. thinking time: 3.2s
+Total thinking time: 19.2s
+# of fluid lines: 4
+
+Interaction Dynamics
+The total number of lines is: 30
+The total time elapsed: 1:49
+The total number of similar lines is: 5
+The total number of near lines is: 6
+# of interaction couplings: 3
+Tightly coupled interactions: 3
+Percent of interactions coupled: 50.0%
+Average turns per coupling: 2
+Longest interaction coupling in turns: 3
+The average number of similar lines per coupling is: 1.3333333333333333
+# of patterns: 3
+Average turns per pattern: 1.6666666666666667
+Dominant Player: Nick
+Percent of lines by dominant player: 56.8%
+Time spent in stats screen: undefineds
+Number of times stats screen active: undefined
+
+Interaction Coupling 0
+Num Turns: 2
+Avg Line Length: 151
+Total Line Length: 1056
+Total Time: 8.9s
+Num Similar Lines: 2
+Area Covered: 43616
+Quadrant Location: Top Right
+Percent Fluid Interactions: 100.0%
+Dominant Player: Nick
+Percent Dominant: 56.4%
+Initiated By: Nick
+Decoupled By: Nick
+
+Interaction Coupling 1
+Num Turns: 3
+Avg Line Length: 381
+Total Line Length: 2287
+Total Time: 17.8s
+Num Similar Lines: 3
+Area Covered: 191016
+Quadrant Location: Top Right
+Percent Fluid Interactions: 66.7%
+Dominant Player: Nick
+Percent Dominant: 79.5%
+Initiated By: Ali
+Decoupled By: Nick
+
+Interaction Coupling 2
+Num Turns: 1
+Avg Line Length: 301
+Total Line Length: 301
+Total Time: 1.5s
+Num Similar Lines: 1
+Area Covered: 14784
+Quadrant Location: Top Left
+Percent Fluid Interactions: 100.0%
+Dominant Player: Nick
+Percent Dominant: 100.0%
+Initiated By: Nick

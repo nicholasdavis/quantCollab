@@ -1,0 +1,8 @@
+Player: Tom
+# of Lines: 1
+Average line length: 321
+# of near contributions: 0
+# of similar contributions: 0
+# of couplings initiated: 0
+# of decouplings initiated: 0
+# of patterns initiated: 0

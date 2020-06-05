@@ -1,0 +1,20 @@
+Player: Tom
+# of Lines: 1
+Average line length: 160
+# of near contributions: 0
+# of similar contributions: 0
+Player: Jerry
+# of Lines: 1
+Average line length: 106
+# of near contributions: 1
+# of similar contributions: 0
+Collaboration Statistics
+The total number of lines is: 2
+The total number of similar lines is: 0
+The total number of near lines is: 1
+# of interaction couplings: 0
+Average turns per coupling: NaN
+Longest interaction coupling in turns: 0
+The average number of similar lines per coupling is: NaN
+# of patterns: 0
+Average turns per pattern: NaN

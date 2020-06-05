@@ -1,0 +1,55 @@
+Player: Tom
+# of Lines: 2
+Average line length: 120
+# of near contributions: 1
+# of similar contributions: 0
+# of couplings initiated: 1
+# of decouplings initiated: 0
+# of patterns initiated: 1
+# of patterns ended: 0
+Avg. time per turn: 0.9s
+Avg. drawing time: 0.3s
+Total drawing time: 0.3s
+Avg. thinking time: 0.6s
+Total thinking time: 0.6s
+# of fluid lines: 1
+
+Player: Jerry
+# of Lines: 1
+Average line length: 192
+# of near contributions: 1
+# of similar contributions: 0
+# of couplings initiated: 0
+# of decouplings initiated: 0
+# of patterns initiated: 0
+# of patterns ended: 0
+Avg. time per turn: 0.8s
+Avg. drawing time: 0.4s
+Total drawing time: 0.4s
+Avg. thinking time: 0.4s
+Total thinking time: 0.4s
+# of fluid lines: 1
+
+Collaboration Statistics
+The total number of lines is: 3
+The total time elapsed: 0:02
+The total number of similar lines is: 0
+The total number of near lines is: 2
+# of interaction couplings: 1
+Average turns per coupling: 1
+Longest interaction coupling in turns: 1
+The average number of similar lines per coupling is: 0
+# of patterns: 0
+Average turns per pattern: NaN
+
+Interaction Coupling 0
+Num Turns: 1
+Avg Line Length: 99
+Total Line Length: 99
+Total Time: 0.9s
+Num Similar Lines: 1
+Area Covered: 1978
+Quadrant Location: Top Left
+Percent Fluid Interactions: 100.0%
+Dominant Player: Tom
+Initiated By: Tom
