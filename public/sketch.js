@@ -124,13 +124,9 @@
   }
 
   function onEndTurn(data){
-    //console.log("EndTurn Activated. Data: " + data); 
-    //console.log("In the endTurn"); 
-    //var players = JSON.parse(data); 
     if(!firstTurn){
     turn = new Turn(activePlayer, inactivePlayer, lines, previousLines, turnStart, turnEnd); 
     analyzer.setDrawingType(drawingType); 
-    //console.log("Analyzer P1: " + analyzer.player1.name); 
     analyzer.analyzeTurn(turn); 
   }
 
@@ -141,8 +137,6 @@
       activePlayer = player1; 
       inactivePlayer = player2; 
     }
-    //console.log("activePlayer: " + activePlayer.name); 
-    //console.log("inactivePlayer: " + inactivePlayer.name); 
     document.getElementById("playerName").innerHTML = "Player: " + activePlayer.name;
 
     var d = new Date(); 
