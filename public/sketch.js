@@ -111,6 +111,23 @@
         }
       }
   }
+  //draw the points that have been drawn since the turn has started
+    for (var i = 0; i<lines.length; i++){
+      for(var j = 0; j<lines[i].points.length -1; j++){
+        if(activePlayer == player1){
+          context.strokeStyle = "blue"; 
+        } else
+          context.strokeStyle = "red"; 
+          if(showLines == false){
+            context.strokeStyle = "black"; 
+          }
+          context.beginPath(); 
+          context.moveTo(lines[i].points[j].x, lines[i].points[j].y); 
+          context.lineTo(lines[i].points[j+1].x, lines[i].points[j+1].y); 
+          context.closePath(); 
+          context.stroke(); 
+    }
+  }
 
     //Display legend
     if(showLines == true){
@@ -201,7 +218,8 @@
     //console.log("Getting end time " + turnEnd); 
     lines[lineCounter].setTime(lineStartTime,lineEndTime); 
     lines[lineCounter].updateLength();  
-    activePlayer.add(lines[lineCounter]);
+    //activePlayer.add(lines[lineCounter]);
+    //analyzer.turns[analyzer.turns.length-1].
     lineCounter++; 
 
   }
