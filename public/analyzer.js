@@ -45,6 +45,7 @@ class Analyzer{
 		this.player1LinesPerIdea = 0; 
 		this.player1LinesAddedToNewIdeas = 0; 
 		this.player1CollaboratorType = ""; 
+		this.player1ClampRate = 0; 
 		this.player2NumCoupledLines = 0; 
 		this.player2SimilarLineCount = 0; 
 		this.player2Offers = 0; 
@@ -68,6 +69,7 @@ class Analyzer{
 		this.player2LinesPerIdea = 0; 
 		this.player2LinesAddedToNewIdeas = 0; 
 		this.player2CollaboratorType = ""; 
+		this.player2ClampRate = 0; 
 
 	}
 
@@ -98,8 +100,55 @@ class Analyzer{
 		this.calculateLinesAddedToNewIdeas(); 
 		this.calculateLinesPerIdea(); 
 		this.calculateCollaborationScore(); 
+		this.calculateClampRate();
 		console.log("Analyzer activated"); 
 	}
+
+	calculateClampRate(){
+		if(this.turns[this.turns.length-1].activePlayer == this.player1){
+			//set clamp rate player 1	
+			if(this.turns[this.turns.length-1].thinkingTime < 2){
+				this.player1ClampRate = 0; 
+			} else if (this.turns[this.turns.length-1].thinkingTime > 2 && this.turns[this.turns.length-1].thinkingTime < 3){
+				this.player1ClampRate = .15;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 3 && this.turns[this.turns.length-1].thinkingTime < 4){
+				this.player1ClampRate = .3;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 4 && this.turns[this.turns.length-1].thinkingTime < 5){
+				this.player1ClampRate = .45;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 5 && this.turns[this.turns.length-1].thinkingTime < 6){
+				this.player1ClampRate = .6;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 6 && this.turns[this.turns.length-1].thinkingTime < 7){
+				this.player1ClampRate = .75;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 7 && this.turns[this.turns.length-1].thinkingTime < 8){
+				this.player1ClampRate = .9;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 8){
+				this.player1ClampRate = 1;
+			} 
+		}else{
+			//set clamp rate player 2
+			if(this.turns[this.turns.length-1].thinkingTime < 2){
+				this.player2ClampRate = 0; 
+			} else if (this.turns[this.turns.length-1].thinkingTime > 2 && this.turns[this.turns.length-1].thinkingTime < 3){
+				this.player2ClampRate = .15;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 3 && this.turns[this.turns.length-1].thinkingTime < 4){
+				this.player2ClampRate = .3;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 4 && this.turns[this.turns.length-1].thinkingTime < 5){
+				this.player2ClampRate = .45;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 5 && this.turns[this.turns.length-1].thinkingTime < 6){
+				this.player2ClampRate = .6;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 6 && this.turns[this.turns.length-1].thinkingTime < 7){
+				this.player2ClampRate = .75;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 7 && this.turns[this.turns.length-1].thinkingTime < 8){
+				this.player2ClampRate = .9;
+			} else if (this.turns[this.turns.length-1].thinkingTime > 8){
+				this.player2ClampRate = 1;
+			}
+		}
+
+		console.log("P1 ClampRate: " + this.player1ClampRate); 
+		console.log("P2 ClampRate: " + this.player2ClampRate); 
+	}
+
 
 	calculateCollaborationScore(){
 		var offerRatio = 0; 
@@ -632,6 +681,45 @@ class Analyzer{
 		}
 		return interactionText; 
 	}
+
+	getCouplingRecord(){
+		var record = ''; 
+		for (var i = 0; i < intCoupleRecord.length; i++){
+			var curRecord = intCoupleRecord[i].y + ','
+			record = record.concat(curRecord); 
+		}
+		record = record.concat('\n\n'); 
+		return record; 
+	}
+
+	getClampRecords(){
+		var p1Record =''; 
+		var p2Record =''; 
+
+		for (var i =0; i<p1ClampRecord.length; i++){
+			var curRecord = p1ClampRecord[i] + ','; 
+			p1Record = p1Record.concat(curRecord); 
+		}
+
+		p1Record = p1Record.concat('\n\n')
+
+		for (var i =0; i<p2ClampRecord.length; i++){
+			var curRecord = p2ClampRecord[i] + ','; 
+			p2Record = p2Record.concat(curRecord); 
+		}
+
+		p2Record = p2Record.concat('\n\n')
+
+
+		var records = {
+			p1Record: p1Record, 
+			p2Record: p2Record
+		}
+
+		return records; 
+
+	}
+
 
 	calculateCouplingCounts(){
 		this.player1InitiateCouplingCount = 0; 

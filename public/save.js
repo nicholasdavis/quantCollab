@@ -95,6 +95,15 @@ class Save{
 
 
 		  saveText = saveText.concat(this.analyzer.getInteractionCouplingDataHTML()); 
+
+		  var coupleRecord = "Coupling Record: " + this.analyzer.getCouplingRecord(); 
+		  saveText = saveText.concat(coupleRecord); 
+
+		  var clampRecord = this.analyzer.getClampRecords(); 
+		  saveText = saveText.concat(this.analyzer.player1.name +"'s clamp record: " + clampRecord.p1Record); 
+		  saveText = saveText.concat(this.analyzer.player2.name +"'s clamp record: " + clampRecord.p2Record); 
+
+
 		return saveText; 
 
 	}

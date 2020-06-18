@@ -1,4 +1,7 @@
 
+  var p1ClampRecord = new Array(); 
+  var p2ClampRecord = new Array(); 
+
   function trackPlayers(){
     var p1State = 0; 
     var p2State = 0; 
@@ -25,6 +28,10 @@
     if(statScreen == false){
       p1Tracker.push({"y": p1State}); 
       p2Tracker.push({"y": p2State}); 
+      p1ClampRecord.push(analyzer.player1ClampRate); 
+      p2ClampRecord.push(analyzer.player2ClampRate); 
+      //console.log("p1ClampRecord" + p1ClampRecord); 
+      //console.log("p2ClampRecord" + p2ClampRecord); 
   }
     if(statScreen == false && analyzer.interactionSequence==true){
       intCoupleRecord.push({"y": 1}); 

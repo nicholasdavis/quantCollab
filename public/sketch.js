@@ -191,6 +191,7 @@
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     intCoupleRecord = new Array(); 
+    firstTurn = true; 
 
     if(data.drawingType == "singleLine"){
       document.getElementById('endTurnButton').style.display = "none"; 
