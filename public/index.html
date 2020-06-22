@@ -13,6 +13,9 @@
     </style>
     <style type="text/css">
 #container {height: 100%; width:100%; font-size: 16px;}
+#left2, #right2{display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 16px;}
+#left2{width:45%;}
+#right2{width:45%;}
 #left, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 16px;}
 #left {width: 45%;}
 #right {width: 45%;}
@@ -24,6 +27,8 @@
 #headerMiddle{width:30%;}
 #collaborationType{font-size: 20px;}
 #collaborationScore{font-size: 20px;}
+#playerName{font-size: 20px; padding-right: 50px}
+#collaborationScoreDisplay{font-size: 20px}
 
 .line {
     fill: none;
@@ -66,6 +71,7 @@
       <button id="showLinesButton" class="btn btn-primary">Show Lines</button>
 
       <b id="playerName"> Click start new session to begin</b>
+      <b id="collaborationScoreDisplay"> Collaboration Score:</b>
     </div>
 
 
@@ -83,6 +89,9 @@
                     <ul class="nav nav-tabs" role="tablist">
                         </li>
                         <li role="presentation" class="active" ><a href="#collaborationDynamicsTab" aria-controls="colaborationDynamicsTab" role="tab" data-toggle="tab">Collaboration Dynamics</a>
+
+                        </li>
+                        <li role="presentation" ><a href="#ideasTab" aria-controls="ideasTab" role="tab" data-toggle="tab">Ideas</a>
 
                         </li>
 
@@ -178,37 +187,71 @@
                           <p >(Score reflects the equality of new ideas and percent of idea acceptances.)</p>
                         <div id = "container">
                             <div id="left"> 
-                              <b id="player1Name2">some text</b>
-                              <p id="player1CollaboratorType">some text</p>
-                              <p id="player1Offers">some text</p>
-                              <p id="player1OffersAccepted">some text</p>
-                              <p id="player1OffersRejected">some text</p>
-                              <p id="player1AvgCoupleFounded">some text</p>
-                              <p id="player1AvgLinesPerCoupledTurn"></p>
-                              <p id="player1CoupledTurnBasedOnOffer"></p>
-                              <p id="player1CoupledLinesBasedOnOffer"></p>
-                              <p id="player1NewIdeasAddedTo">some text</p>
+                              <b id="player1Name2">some text</b></br>
+                              <b id="player1CollaboratorType">some text</b></br>
+                              <b id="player1Offers">some text</b>
+                              <p >(Turns far away from partner's last turn)</p>
+                              <b id="player1OffersAccepted">some text</b>
+                              <p >(Turns close to partner's new idea)</p>
+                              <b id="player1OffersRejected">some text</b>
+                              <p >(Turns far from partner's new idea)</p>
+                              <b id="player1ElaborationCount">some text</b>
+                              <p >(Lines close to partner's previous turn)</p>
+
 
 
 
                             </div>
                             <div id="right"> 
-                              <b id="player2Name2">some text</b>
-                              <p id="player2CollaboratorType">some text</p>
-                              <p id="player2Offers">some text</p>
-                              <p id="player2OffersAccepted">some text</p>
-                              <p id="player2OffersRejected">some text</p>
-                              <p id="player2AvgCoupleFounded">some text</p>
-                              <p id="player2AvgLinesPerCoupledTurn"></p>
-                              <p id="player2CoupledTurnBasedOnOffer"></p>
-                              <p id="player2CoupledLinesBasedOnOffer"></p>
-                              <p id="player2NewIdeasAddedTo">some text</p>
+                              <b id="player2Name2">some text</b></br>
+                              <b id="player2CollaboratorType">some text</b></br>
+                              <b id="player2Offers">some text</b>
+                              <p >(Turns far away from partner's last turn)</p>
+                              <b id="player2OffersAccepted">some text</b>
+                              <p >(Turns close to partner's new idea)</p>
+                              <b id="player2OffersRejected">some text</b>
+                              <p >(Turns far from partner's new idea)</p>
+                              <b id="player2ElaborationCount">some text</b>
+                              <p >(Lines close to partner's previous turn)</p>
+
 
                             </div>
                           </div>
 
-
                         </div>
+
+
+
+                        <div role="tabpanel" class="tab-pane" id="ideasTab">
+                        <div id = "container2">
+                          <div id="left2"> 
+                              <b id="player1Name3">some text</b></br>
+                              <b >Depth of Ideas</b>
+                              <p id="player1AvgCoupleFounded">some text</p>
+                              <p id="player1AvgLinesPerCoupledTurn"></p>
+                              <b >Influence of Ideas</b>
+                              <p id="player1CoupledTurnBasedOnOffer"></p>
+                              <p id="player1CoupledLinesBasedOnOffer"></p>
+                              <p id="player1NewIdeasAddedTo">some text</p>
+                          </div>
+                          <div id = "right2">
+                              <b id="player2Name3">some text</b></br>
+                              <b >Depth of Ideas</b>
+                              <p id="player2AvgCoupleFounded">some text</p>
+                              <p id="player2AvgLinesPerCoupledTurn"></p>
+                              <b >Influence of Ideas</b>
+                              <p id="player2CoupledTurnBasedOnOffer"></p>
+                              <p id="player2CoupledLinesBasedOnOffer"></p>
+                              <p id="player2NewIdeasAddedTo">some text</p>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
 
 
                         <div role="tabpanel" class="tab-pane" id="chartsTab">

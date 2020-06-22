@@ -13,6 +13,8 @@ class Analyzer{
 		this.pattern = new Array();
 		this.similarInteractions = 0; 
 		this.turns = new Array(); 
+		this.stateRecord = new Array();
+		this.currentState = ""
 		this.totalSessionTime = 0; 
 		this.dominantPlayer; 
 		this.dominantPercent; 
@@ -24,6 +26,7 @@ class Analyzer{
 		this.collaborationScore = 0; 
 		this.structuralCouplingCount = 0; 
 		this.player1NumCoupledLines = 0; 
+		this.player1OverallCoupling = 0;
 		this.player1SimilarLineCount = 0; 
 		this.player1CoupleFoundedAvgDepth = 0; 
 		this.player1Offers = 1; 
@@ -47,6 +50,7 @@ class Analyzer{
 		this.player1CollaboratorType = ""; 
 		this.player1ClampRate = 0; 
 		this.player2NumCoupledLines = 0; 
+		this.player1OverallCoupling = 0; 
 		this.player2SimilarLineCount = 0; 
 		this.player2Offers = 0; 
 		this.player2OfferCountLabel = ""; 
@@ -101,6 +105,8 @@ class Analyzer{
 		this.calculateLinesPerIdea(); 
 		this.calculateCollaborationScore(); 
 		this.calculateClampRate();
+		this.calculateOverallCoupling(); 
+		this.calculateStateRecord();
 		console.log("Analyzer activated"); 
 	}
 
@@ -144,9 +150,65 @@ class Analyzer{
 				this.player2ClampRate = 1;
 			}
 		}
+	}
 
-		console.log("P1 ClampRate: " + this.player1ClampRate); 
-		console.log("P2 ClampRate: " + this.player2ClampRate); 
+	calculateStateRecord(){
+
+		if(this.turns.length == 1){
+			if(this.turns[this.turns.length-1].activePlayer == this.player1){
+				if(this.turns[this.turns.length-1].proximity == "far"){
+					this.stateRecord.push(this.player1.name + ":Offer"); 
+					this.currentState = this.player1.name + ":Offer"; 
+				}
+				else if(this.turns[this.turns.length-1].proximity == "near"){
+					this.stateRecord.push(this.player1.name +":Acceptance"); 
+					this.currentState = this.player1.name + ":Acceptance"; 
+				}
+			}else {
+				if(this.turns[this.turns.length-1].proximity == "far"){
+					this.stateRecord.push(this.player2.name + ":Offer"); 
+					this.currentState = this.player2.name + ":Offer"; 
+					}
+				else if(this.turns[this.turns.length-1].proximity == "near"){
+					this.stateRecord.push(this.player2.name + ":Acceptance");
+					this.currentState = this.player2.name + ":Acceptance"; 
+
+			}
+		}
+	}
+
+		if(this.turns.length > 1 ){
+			if(this.turns[this.turns.length-1].activePlayer == this.player1){
+				if(this.turns[this.turns.length-1].proximity == "far"){
+					this.stateRecord.push(this.player1.name + ":Offer"); 
+					this.currentState = this.player1.name + ":Offer"; 
+				}
+				else if(this.turns[this.turns.length-1].proximity == "near" && this.turns[this.turns.length-2].proximity == "far"){
+					this.stateRecord.push(this.player1.name +":Acceptance"); 
+					this.currentState = this.player1.name + ":Acceptance"; 
+				}
+				else if(this.turns[this.turns.length-1].proximity == "near" && this.turns[this.turns.length-2].proximity == "near"){
+					this.stateRecord.push(this.player1.name +":Elaboration"); 
+					this.currentState = this.player1.name + ":Elaboration"
+				}
+		}else {
+			if(this.turns[this.turns.length-1].proximity == "far"){
+					this.stateRecord.push(this.player2.name + ":Offer"); 
+					this.currentState = this.player2.name + ":Offer"; 
+
+				}
+				else if(this.turns[this.turns.length-1].proximity == "near" && this.turns[this.turns.length-2].proximity == "far"){
+					this.stateRecord.push(this.player2.name + ":Acceptance");
+					this.currentState = this.player2.name + ":Acceptance"; 
+
+				}
+				else if(this.turns[this.turns.length-1].proximity == "near" && this.turns[this.turns.length-2].proximity == "near"){
+					this.stateRecord.push(this.player2.name + ":Elaboration"); 
+					this.currentState = this.player2.name + ":Elaboration"; 
+				}
+			}
+	}
+		console.log("StateRecord: " + this.stateRecord); 
 	}
 
 
@@ -271,6 +333,25 @@ class Analyzer{
 
 		//console.log("P1 Coupled Lines: " + this.player1NumCoupledLines + "P2 Coupled Lines: " + this.player2NumCoupledLines); 
 		//console.log("P1 Avg Lines Per Coupled Turn: " + this.player1AvgLinesPerCoupledTurn + "P2 Avg Lines per coupled turn " + this.player2AvgLinesPerCoupledTurn); 
+	}
+
+	calculateOverallCoupling(){
+		var p1Coupled = 0; 
+		var p2Coupled = 0; 
+		for(var i = 0; i<this.interactionStorage.length; i++){
+			for(var j = 0; j<this.interactionStorage[i].turns.length; j++){
+			if(this.interactionStorage[i].turns[j].activePlayer == this.player1){
+				//console.log("Inactive Player == Player1"); 
+				p1Coupled += this.interactionStorage[i].turns[j].currentLines.length; 
+			}else{
+				//console.log("Inactive Player == Player2"); 
+				p2Coupled += this.interactionStorage[i].turns[j].currentLines.length; 
+			}
+		}
+	}
+		this.player1OverallCoupling = p1Coupled; 
+		this.player2OverallCoupling = p2Coupled; 
+
 	}
 
 	calculateOfferCountLabels(){

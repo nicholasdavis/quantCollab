@@ -73,6 +73,7 @@ class Display{
 		  document.getElementById("player1Offers").innerHTML = "New Ideas Generated: " + this.analyzer.player1Offers;
 		  document.getElementById("player1OffersAccepted").innerHTML = "New Ideas Accepted: " + this.analyzer.player1InitiateCouplingCount;
 		  document.getElementById("player1OffersRejected").innerHTML = "New Ideas Rejected: " + (this.analyzer.player2Offers - this.analyzer.player1InitiateCouplingCount);
+		  document.getElementById("player1ElaborationCount").innerHTML = "Elaboration Count: " + this.analyzer.player1OverallCoupling;
 		  document.getElementById("player1CoupledTurnBasedOnOffer").innerHTML = "Turns Dedicated to Your Ideas: " + this.analyzer.player1CoupledStartedCount;
 		  document.getElementById("player1AvgCoupleFounded").innerHTML = "Turns Per Idea: " + this.analyzer.player1CoupleFoundedAvgDepth.toFixed(1);
 		  document.getElementById("player1NewIdeasAddedTo").innerHTML = "Lines Adding to New Ideas: " + this.analyzer.player1LinesAddedToNewIdeas;
@@ -83,9 +84,14 @@ class Display{
 		  document.getElementById("player2Offers").innerHTML = "New Ideas Generated: " + this.analyzer.player2Offers;
 		  document.getElementById("player2OffersAccepted").innerHTML = "New Ideas Accepted: " + this.analyzer.player2InitiateCouplingCount;
 		  document.getElementById("player2OffersRejected").innerHTML = "New Ideas Rejected: " + (this.analyzer.player1Offers - this.analyzer.player2InitiateCouplingCount);
+		  document.getElementById("player2ElaborationCount").innerHTML = "Elaboration Count: " + this.analyzer.player2OverallCoupling;
 		  document.getElementById("player2CoupledTurnBasedOnOffer").innerHTML = "Turns Dedicated to Your Ideas: " + this.analyzer.player2CoupledStartedCount;
 		  document.getElementById("player2AvgCoupleFounded").innerHTML = "Turns Per Idea: " + this.analyzer.player2CoupleFoundedAvgDepth.toFixed(1);
 		  document.getElementById("player2NewIdeasAddedTo").innerHTML = "Lines Adding to New Ideas: " + this.analyzer.player2LinesAddedToNewIdeas;
+
+		  document.getElementById("player1Name3").innerHTML = "Player: " + this.analyzer.player1.name;
+		  document.getElementById("player2Name3").innerHTML = "Player: " + this.analyzer.player2.name;
+
 
 
 		  if(this.analyzer.drawingType == "multiLine"){

@@ -140,6 +140,10 @@
 
   }
 
+  function updateCollaborationScore(){
+    document.getElementById("collaborationScoreDisplay").innerHTML = "Collaboration Score: " + analyzer.collaborationScore.toFixed(1) + "%";
+  }
+
   function onEndTurn(data){
     if(!firstTurn){
     turn = new Turn(activePlayer, inactivePlayer, lines, previousLines, turnStart, turnEnd); 
@@ -163,6 +167,8 @@
     lineCounter = 0; 
     turnStart = d.getTime(); 
     firstTurn = false; 
+    updateCollaborationScore();
+
   }
 
 

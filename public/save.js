@@ -18,6 +18,7 @@ class Save{
 		"New Ideas Generated: " + this.analyzer.player1Offers + "\n"+
 		"New Ideas Accepted: " + this.analyzer.player1InitiateCouplingCount + "\n" + 
 		"New Ideas Rejected: " + (this.analyzer.player2Offers - this.analyzer.player1InitiateCouplingCount) + "\n"+
+		"Elaboration Count: " + this.analyzer.player1OverallCoupling + "\n" +
 		"Turns Dedicated to Your Ideas: " + this.analyzer.player1CoupledStartedCount + "\n"+
 		"Lines dedicated to Your Ideas: " + this.analyzer.player1NumCoupledLines + "\n" + 
 		"Turns Per Idea: " + this.analyzer.player1CoupleFoundedAvgDepth.toFixed(1) + "\n"+
@@ -32,6 +33,7 @@ class Save{
 		"New Ideas Generated: " + this.analyzer.player2Offers + "\n"+
 		"New Ideas Accepted: " + this.analyzer.player2InitiateCouplingCount + "\n" + 
 		"New Ideas Rejected: " + (this.analyzer.player1Offers - this.analyzer.player2InitiateCouplingCount) + "\n"+
+		"Elaboration Count: " + this.analyzer.player2OverallCoupling + "\n" +
 		"Turns Dedicated to Your Idea: " + this.analyzer.player2CoupledStartedCount + "\n"+
 		"Lines Dedicatred to your Idea: " + this.analyzer.player2NumCoupledLines + "\n" + 
 		"Turns Per Idea: " + this.analyzer.player2CoupleFoundedAvgDepth.toFixed(1) + "\n"+
@@ -96,12 +98,13 @@ class Save{
 
 		  saveText = saveText.concat(this.analyzer.getInteractionCouplingDataHTML()); 
 
-		  var coupleRecord = "Coupling Record: " + this.analyzer.getCouplingRecord(); 
+		  var coupleRecord = "\n"+ "Coupling Record: " + this.analyzer.getCouplingRecord(); 
 		  saveText = saveText.concat(coupleRecord); 
 
 		  var clampRecord = this.analyzer.getClampRecords(); 
 		  saveText = saveText.concat(this.analyzer.player1.name +"'s clamp record: " + clampRecord.p1Record); 
 		  saveText = saveText.concat(this.analyzer.player2.name +"'s clamp record: " + clampRecord.p2Record); 
+		  saveText = saveText.concat("State Record: " + this.analyzer.stateRecord)
 
 
 		return saveText; 
