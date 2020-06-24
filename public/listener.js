@@ -43,6 +43,16 @@
     //Each time step define two variables as current activity of 
   }
 
+  var statModeCheckbox = document.getElementById("statMode"); 
+  statModeCheckbox.onclick = function(){
+    if(document.getElementById("statMode").checked == true){
+      socket.emit('statMode', true);
+    }else{
+      socket.emit('statMode', false);
+
+    }
+
+  }
 
   var endTurnButton = document.getElementById("endTurnButton"); 
   endTurnButton.onclick = function(){

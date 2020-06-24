@@ -24,7 +24,10 @@ function onConnection(socket){
   }); 
   socket.on('mouseup', function(data){
   	io.emit('mouseup', data); 
-  })
+  }); 
+  socket.on('statMode', function(data){
+  	io.emit('statMode', data); 
+  }); 
 
 
 }

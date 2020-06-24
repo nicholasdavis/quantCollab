@@ -25,6 +25,7 @@
   socket.on('newSession', onNewSession); 
   socket.on('mousedown', mouseDownEvent); 
   socket.on('mouseup', mouseUpEvent); 
+  socket.on('statMode', onStatModeEvent); 
 
   var lineCounter = 0; 
   var lines = new Array(); 
@@ -142,6 +143,18 @@
 
   function updateCollaborationScore(){
     document.getElementById("collaborationScoreDisplay").innerHTML = "Collaboration Score: " + analyzer.collaborationScore.toFixed(1) + "%";
+  }
+
+  function onStatModeEvent(data){
+    if(data == true){
+      document.getElementById("statMode").checked = true; 
+      document.getElementById("statButton").style.display = "inline"; 
+      document.getElementById("collaborationScoreDisplay").style.display = "inline"; 
+    } else{
+      document.getElementById("statMode").checked = false; 
+      document.getElementById("statButton").style.display = "none"; 
+      document.getElementById("collaborationScoreDisplay").style.display = "none";
+    }
   }
 
   function onEndTurn(data){
