@@ -125,10 +125,6 @@ class Display{
 		  	document.getElementById("player1AvgLinesPerCoupledTurn").innerHTML = "Lines Per Idea: " + this.analyzer.player1LinesPerIdea.toFixed(1);
 		  	document.getElementById("player2CoupledLinesBasedOnOffer").innerHTML = "Lines Dedicated to Your Ideas: " + this.analyzer.player2NumCoupledLines;
 		  	document.getElementById("player2AvgLinesPerCoupledTurn").innerHTML = "Lines Per Idea: " + this.analyzer.player2LinesPerIdea.toFixed(1);
-		  	document.getElementById("player1CoupledLinesBasedOnOffer2").innerHTML = "Lines Dedicated to Your Ideas: " + this.analyzer.player1NumCoupledLines;
-		  	document.getElementById("player1AvgLinesPerCoupledTurn2").innerHTML = "Lines Per Idea: " + this.analyzer.player1LinesPerIdea.toFixed(1);
-		  	document.getElementById("player2CoupledLinesBasedOnOffer2").innerHTML = "Lines Dedicated to Your Ideas: " + this.analyzer.player2NumCoupledLines;
-		  	document.getElementById("player2AvgLinesPerCoupledTurn2").innerHTML = "Lines Per Idea: " + this.analyzer.player2LinesPerIdea.toFixed(1);
 		  
 		  }
 

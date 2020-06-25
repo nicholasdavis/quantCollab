@@ -203,7 +203,7 @@
     lines = new Array(); 
     analyzer = new Analyzer(player1, player2, lines); 
     display = new Display(analyzer); 
-
+    display.display();
     //clear the canvas
     var width = document.getElementById('canvas').width; 
     var height = document.getElementById('canvas').height; 

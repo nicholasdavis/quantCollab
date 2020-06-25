@@ -16,11 +16,11 @@ class Analyzer{
 		this.stateRecord = new Array();
 		this.currentState = ""
 		this.totalSessionTime = 0; 
-		this.dominantPlayer; 
-		this.dominantPercent; 
+		this.dominantPlayer = ""; 
+		this.dominantPercent = 0; 
 		this.statTime; 
 		this.statCount; 
-		this.percentCoupled; 
+		this.percentCoupled = 0; 
 		this.collaborationDynamicLabels; 
 		this.collaborationType = ""; 
 		this.collaborationScore = 0; 
@@ -29,7 +29,7 @@ class Analyzer{
 		this.player1OverallCoupling = 0;
 		this.player1SimilarLineCount = 0; 
 		this.player1CoupleFoundedAvgDepth = 0; 
-		this.player1Offers = 1; 
+		this.player1Offers = 0; 
 		this.player1OfferCountLabel = ""; 
 		this.player1AcceptCountLabel = ""; 
 		this.player1RejectCountLable = ""; 
@@ -50,7 +50,7 @@ class Analyzer{
 		this.player1CollaboratorType = ""; 
 		this.player1ClampRate = 0; 
 		this.player2NumCoupledLines = 0; 
-		this.player1OverallCoupling = 0; 
+		this.player2OverallCoupling = 0; 
 		this.player2SimilarLineCount = 0; 
 		this.player2Offers = 0; 
 		this.player2OfferCountLabel = ""; 
