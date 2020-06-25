@@ -67,6 +67,8 @@
   window.setInterval(trackPlayers, 1000); 
   window.addEventListener('resize', onResize, false);
   onResize();
+  document.getElementById("dashboard").style.display = "none"; 
+  document.getElementById("collaborationScoreDisplay").style.display = "none";
 
   function displayLines(){
     //cycle through analyzer.turns to draw each line
@@ -148,11 +150,12 @@
   function onStatModeEvent(data){
     if(data == true){
       document.getElementById("statMode").checked = true; 
-      document.getElementById("statButton").style.display = "inline"; 
+      document.getElementById("dashboard").style.display = "inline-block"; 
       document.getElementById("collaborationScoreDisplay").style.display = "inline"; 
     } else{
       document.getElementById("statMode").checked = false; 
-      document.getElementById("statButton").style.display = "none"; 
+      //document.getElementById("statButton").style.display = "none"; 
+      document.getElementById("dashboard").style.display = "none"; 
       document.getElementById("collaborationScoreDisplay").style.display = "none";
     }
   }
@@ -162,6 +165,7 @@
     turn = new Turn(activePlayer, inactivePlayer, lines, previousLines, turnStart, turnEnd); 
     analyzer.setDrawingType(drawingType); 
     analyzer.analyzeTurn(turn); 
+
   }
 
     if(data.activePlayer == player1.name){
@@ -181,6 +185,7 @@
     turnStart = d.getTime(); 
     firstTurn = false; 
     updateCollaborationScore();
+    display.display();
 
   }
 
@@ -347,8 +352,18 @@ var yOffset = $("#headerContainer").outerHeight();
 
   // make the canvas fill its parent
   function onResize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    //canvas.width = window.innerWidth;
+    //canvas.height = window.innerHeight;
+    //console.log("Div drawingCanvas width: " + document.getElementById("drawingCanvas").width); 
+    //console.log("Div drawingCanvas heibght: " + document.getElementById("drawingCanvas").height); 
+    console.log("Div drawingCanvas width: " + $("drawingCanvas").width()); 
+    console.log("Div drawingCanvas heibght: " + $("drawingCanvas").height());
+    canvas.style.width = '100%';
+    canvas.style.height = '100%'; 
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    console.log("Canvas width = " + canvas.width); 
+    console.log("Canvas height = " + canvas.height); 
     if(analyzer.turns.length >= 1){
       displayLines(); 
     }

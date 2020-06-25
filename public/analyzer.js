@@ -448,13 +448,13 @@ class Analyzer{
 
 
 		if(this.player1AcceptCountLabel == "low" & this.player2AcceptCountLabel == "low"){
-			this.collaborationType =  "Isolated Collaboration"; 
+			this.collaborationType =  "Isolated"; 
 		}else if( equalDrawing && this.player1AcceptCountLabel == "high" && this.player2AcceptCountLabel == "high" ){
-			this.collaborationType = "Balanced Collaboration"; 
+			this.collaborationType = "Balanced"; 
 		}else if((this.player1OfferCountLabel == "high" && this.player1RejectCountLabel == "high") || (this.player2OfferCountLabel == "high" && this.player2RejectCountLabel == "high")){
-			this.collaborationType = "Dominant Collaboration"; 
+			this.collaborationType = "Dominant"; 
 		}else if ((this.player1OfferCountLabel == "high" && this.player2AcceptCountLabel == "high") || (this.player2OfferCountLabel=="high" && this.player1AcceptCountLabel == "high" )){
-			this.collaborationType = "Follow the Leader Collaboration"; 
+			this.collaborationType = "Follow the Leader"; 
 		}else{
 			console.log("No types found"); 
 		}
