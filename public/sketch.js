@@ -223,6 +223,8 @@
     else{
       document.getElementById('endTurnButton').style.display ="inline";
     }
+    updateCollaborationScore();
+
 
   }
 
