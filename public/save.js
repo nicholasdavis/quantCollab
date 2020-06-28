@@ -17,7 +17,7 @@ class Save{
 		"Collaborator Type: " + this.analyzer.player1CollaboratorType + "\n" + 
 		"New Ideas Generated: " + this.analyzer.player1Offers + "\n"+
 		"New Ideas Accepted: " + this.analyzer.player1InitiateCouplingCount + "\n" + 
-		"New Ideas Rejected: " + (this.analyzer.player2Offers - this.analyzer.player1InitiateCouplingCount) + "\n"+
+		"New Ideas Rejected: " + this.analyzer.player1Rejections + "\n"+
 		"Elaboration Count: " + this.analyzer.player1OverallCoupling + "\n" +
 		"Turns Dedicated to Your Ideas: " + this.analyzer.player1CoupledStartedCount + "\n"+
 		"Lines dedicated to Your Ideas: " + this.analyzer.player1NumCoupledLines + "\n" + 
@@ -32,7 +32,7 @@ class Save{
 		"Collaborator Type: " + this.analyzer.player2CollaboratorType + "\n" + 
 		"New Ideas Generated: " + this.analyzer.player2Offers + "\n"+
 		"New Ideas Accepted: " + this.analyzer.player2InitiateCouplingCount + "\n" + 
-		"New Ideas Rejected: " + (this.analyzer.player1Offers - this.analyzer.player2InitiateCouplingCount) + "\n"+
+		"New Ideas Rejected: " + this.analyzer.player2Rejections + "\n"+
 		"Elaboration Count: " + this.analyzer.player2OverallCoupling + "\n" +
 		"Turns Dedicated to Your Idea: " + this.analyzer.player2CoupledStartedCount + "\n"+
 		"Lines Dedicatred to your Idea: " + this.analyzer.player2NumCoupledLines + "\n" + 
@@ -91,9 +91,7 @@ class Save{
 		  "# of patterns: " + this.analyzer.patternStorage.length+"\n"+
 		  "Average turns per pattern: " + this.analyzer.calculateAveragePatternTurns() +"\n"+
 		  "Dominant Player: " + this.analyzer.dominantPlayer.name + "\n" +  
-		  "Percent of lines by dominant player: " + this.analyzer.dominantPercent.toFixed(1) + "%" +"\n" + 
-		  "Time spent in stats screen: " + this.analyzer.statTime + "s"+"\n" +
-		  "Number of times stats screen active: " + this.analyzer.statCount + "\n\n"; 
+		  "Percent of lines by dominant player: " + this.analyzer.dominantPercent.toFixed(1) + "%" +"\n\n";  
 
 
 		  saveText = saveText.concat(this.analyzer.getInteractionCouplingDataHTML()); 
