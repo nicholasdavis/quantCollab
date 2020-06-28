@@ -30,6 +30,7 @@ class Analyzer{
 		this.player1SimilarLineCount = 0; 
 		this.player1CoupleFoundedAvgDepth = 0; 
 		this.player1Offers = 0; 
+		this.player1Rejections = 0; 
 		this.player1OfferCountLabel = ""; 
 		this.player1AcceptCountLabel = ""; 
 		this.player1RejectCountLable = ""; 
@@ -53,6 +54,7 @@ class Analyzer{
 		this.player2OverallCoupling = 0; 
 		this.player2SimilarLineCount = 0; 
 		this.player2Offers = 0; 
+		this.player2Rejections = 0; 
 		this.player2OfferCountLabel = ""; 
 		this.player2AcceptCountLabel = ""; 
 		this.player2RejectCountLabel = ""; 
@@ -107,6 +109,7 @@ class Analyzer{
 		this.calculateClampRate();
 		this.calculateOverallCoupling(); 
 		this.calculateStateRecord();
+		this.calculateRejections(); 
 		console.log("Analyzer activated"); 
 	}
 
@@ -166,8 +169,8 @@ class Analyzer{
 				}
 			}else {
 				if(this.turns[this.turns.length-1].proximity == "far"){
-					this.stateRecord.push(this.player2.name + ":Offer"); 
-					this.currentState = this.player2.name + ":Offer"; 
+					this.stateRecord.push(this.player2.name + ":Rejection"); 
+					this.currentState = this.player2.name + ":Rejection"; 
 					}
 				else if(this.turns[this.turns.length-1].proximity == "near"){
 					this.stateRecord.push(this.player2.name + ":Acceptance");
@@ -179,9 +182,13 @@ class Analyzer{
 
 		if(this.turns.length > 1 ){
 			if(this.turns[this.turns.length-1].activePlayer == this.player1){
-				if(this.turns[this.turns.length-1].proximity == "far"){
+				if(this.turns[this.turns.length-1].proximity == "far" && this.turns[this.turns.length-2].proximity == "near"){
 					this.stateRecord.push(this.player1.name + ":Offer"); 
 					this.currentState = this.player1.name + ":Offer"; 
+				}
+				else if(this.turns[this.turns.length-1].proximity == "far" && this.turns[this.turns.length-2].proximity == "far"){
+					this.stateRecord.push(this.player1.name +":Rejection"); 
+					this.currentState = this.player1.name + ":Rejection"; 
 				}
 				else if(this.turns[this.turns.length-1].proximity == "near" && this.turns[this.turns.length-2].proximity == "far"){
 					this.stateRecord.push(this.player1.name +":Acceptance"); 
@@ -192,10 +199,13 @@ class Analyzer{
 					this.currentState = this.player1.name + ":Elaboration"
 				}
 		}else {
-			if(this.turns[this.turns.length-1].proximity == "far"){
+			if(this.turns[this.turns.length-1].proximity == "far" && this.turns[this.turns.length-2].proximity == "near"){
 					this.stateRecord.push(this.player2.name + ":Offer"); 
 					this.currentState = this.player2.name + ":Offer"; 
-
+				}
+				else if(this.turns[this.turns.length-1].proximity == "far" && this.turns[this.turns.length-2].proximity == "far"){
+					this.stateRecord.push(this.player2.name +":Rejection"); 
+					this.currentState = this.player2.name + ":Rejection"; 
 				}
 				else if(this.turns[this.turns.length-1].proximity == "near" && this.turns[this.turns.length-2].proximity == "far"){
 					this.stateRecord.push(this.player2.name + ":Acceptance");
@@ -542,6 +552,36 @@ class Analyzer{
 		this.player1Offers = p1Offer; 
 		this.player2Offers = p2Offer; 
 		//console.log("p1Off: " + this.player1Offers + "p2Offer:" + p2Offer); 
+	}
+
+	calculateRejections(){
+		var p1Rejection = 0; 
+		var p2Rejection = 0; 
+		for(var i=0; i<this.turns.length; i++){
+			if(i == 0){
+				if(this.turns[i].activePlayer == this.player1 && this.turns[i].proximity == "far"){
+					p1Rejection++; 
+					//console.log("Just Incremented offer: " + p1Offer); 
+				}
+				if (this.turns[i].activePlayer == this.player2 && this.turns[i].proximity == "far"){
+					p2Rejection++; 
+					//console.log("Just Incremented offer: " + p2Offer); 
+				}
+			}else{
+				if(this.turns[i].activePlayer == this.player1 && this.turns[i].proximity == "far" && this.turns[i-1].proximity =="far"){
+					p1Rejection++; 
+				}
+				if(this.turns[i].activePlayer == this.player2 && this.turns[i].proximity == "far" && this.turns[i-1].proximity =="far"){
+					p2Rejection++; 
+				}
+
+			}
+
+			
+		}
+		this.player1Rejections = p1Rejection; 
+		this.player2Rejections = p2Rejection; 
+		console.log("p1Rejections: " + this.player1Rejections + "p2Rejections:" + this.player2Rejections); 
 	}
 
 	calculateCoupledStartCount(){

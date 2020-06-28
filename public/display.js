@@ -98,7 +98,7 @@ class Display{
 		  document.getElementById("player1CollaboratorType2").innerHTML = "Collaborator Type: " + this.analyzer.player1CollaboratorType;
 		  document.getElementById("player1Offers2").innerHTML = "New Ideas Generated: " + this.analyzer.player1Offers;
 		  document.getElementById("player1OffersAccepted2").innerHTML = "New Ideas Accepted: " + this.analyzer.player1InitiateCouplingCount;
-		  document.getElementById("player1OffersRejected2").innerHTML = "New Ideas Rejected: " + (this.analyzer.player2Offers - this.analyzer.player1InitiateCouplingCount);
+		  document.getElementById("player1OffersRejected2").innerHTML = "New Ideas Rejected: " + this.analyzer.player1Rejections;
 		  document.getElementById("player1ElaborationCount2").innerHTML = "Elaboration Count: " + this.analyzer.player1OverallCoupling;
 		  document.getElementById("player1IdeaDepth").innerHTML = "Depth of Ideas: " + this.analyzer.player1CoupleFoundedAvgDepth.toFixed(1);
 		  document.getElementById("player1IdeaInfluence").innerHTML = "Influence of Ideas: " + this.analyzer.player1NumCoupledLines;
@@ -110,7 +110,7 @@ class Display{
 		  document.getElementById("player2CollaboratorType2").innerHTML = "Collaborator Type: " + this.analyzer.player2CollaboratorType;
 		  document.getElementById("player2Offers2").innerHTML = "New Ideas Generated: " + this.analyzer.player2Offers;
 		  document.getElementById("player2OffersAccepted2").innerHTML = "New Ideas Accepted: " + this.analyzer.player2InitiateCouplingCount;
-		  document.getElementById("player2OffersRejected2").innerHTML = "New Ideas Rejected: " + (this.analyzer.player1Offers - this.analyzer.player2InitiateCouplingCount);
+		  document.getElementById("player2OffersRejected2").innerHTML = "New Ideas Rejected: " + this.analyzer.player2Rejections;
 		  document.getElementById("player2IdeaDepth").innerHTML = "Depth of Ideas: " + this.analyzer.player2CoupleFoundedAvgDepth.toFixed(1);
 		  document.getElementById("player2ElaborationCount2").innerHTML = "Elaboration Count: " + this.analyzer.player2OverallCoupling;
 		  document.getElementById("player2IdeaInfluence").innerHTML = "Influence of Ideas: " + this.analyzer.player2NumCoupledLines;

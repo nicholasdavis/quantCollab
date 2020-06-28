@@ -161,6 +161,9 @@
   }
 
   function onEndTurn(data){
+    if(firstTurn){
+      analyzer.player1Offers = 1; 
+    }
     if(!firstTurn){
     turn = new Turn(activePlayer, inactivePlayer, lines, previousLines, turnStart, turnEnd); 
     analyzer.setDrawingType(drawingType); 
