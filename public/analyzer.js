@@ -293,7 +293,35 @@ class Analyzer{
 
 		//	console.log("P1 CollabType Label before if statements :"+ this.player1CollaboratorType); 
 
+		if(this.player1NumCoupledLines == 0 && this.player2NumCoupledLines == 0 ){
+			if(this.player1Offers > this.player2Offers){
+				this.player1CollaboratorType = "Leader"; 
+				this.player2CollaboratorType = "Follower"; 
+			}else{
+				this.player1CollaboratorType = "Follower"; 
+				this.player2CollaboratorType = "Leader";
+			}
+		}
+		if(this.player1NumCoupledLines > this.player2NumCoupledLines){
+			this.player1CollaboratorType = "Leader"; 
+			this.player2CollaboratorType = "Follower"; 
+		}else{
+			this.player1CollaboratorType = "Follower"; 
+			this.player2CollaboratorType = "Leader";
+		}
 
+		if(this.player1NumCoupledLines == this.player2NumCoupledLines){
+			if(this.player1Offers > this.player2Offers){
+				this.player1CollaboratorType = "Leader"; 
+				this.player2CollaboratorType = "Follower"; 
+			}else{
+				this.player1CollaboratorType = "Follower"; 
+				this.player2CollaboratorType = "Leader";
+			}
+		}
+
+
+/*
 
 		if(this.player1OfferCountLabel == "high" && this.player1AcceptCountLabel == "low" && this.player1RejectCountLabel == "high" && this.player1ElaborationLabel == "low" && this.player2OfferCountLabel == "high" && this.player2AcceptCountLabel == "low" && this.player2RejectCountLabel == "high" & this.player2ElaborationLabel == "low"){
 			this.player1CollaboratorType = "Isolated"; 
@@ -319,7 +347,7 @@ class Analyzer{
 		}else if(this.player2AcceptCountLabel == "high" && this.player2RejectCountLabel == "low" && this.player2InfluenceLabel == "low"){
 			this.player2CollaboratorType = "Follower"; 
 		}
-
+*/
 
 
 
