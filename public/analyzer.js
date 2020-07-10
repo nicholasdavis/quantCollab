@@ -34,6 +34,8 @@ class Analyzer{
 		this.player1OfferCountLabel = ""; 
 		this.player1AcceptCountLabel = ""; 
 		this.player1RejectCountLable = ""; 
+		this.player1ElaborationLabel = ""; 
+		this.player1InfluenceLabel = ""; 
 		this.player1CoupledStartedCount = 0; 
 		this.player1InitiateCouplingCount = 0; 
 		this.player1DecoupleCount = 0; 
@@ -58,6 +60,8 @@ class Analyzer{
 		this.player2OfferCountLabel = ""; 
 		this.player2AcceptCountLabel = ""; 
 		this.player2RejectCountLabel = ""; 
+		this.player2ElaborationLabel = ""; 
+		this.player2InfluenceLabel = ""; 
 		this.player2CoupleFoundedAvgDepth = 0; 
 		this.player2CoupledStartedCount = 0; 
 		this.player2InitiateCouplingCount = 0; 
@@ -289,28 +293,30 @@ class Analyzer{
 
 		//	console.log("P1 CollabType Label before if statements :"+ this.player1CollaboratorType); 
 
-		if(this.player1OfferCountLabel == "high" && this.player1AcceptCountLabel == "low" && this.player1RejectCountLabel == "high" && this.player2OfferCountLabel == "high" && this.player2AcceptCountLabel == "low" && this.player2RejectCountLabel == "high"){
+
+
+		if(this.player1OfferCountLabel == "high" && this.player1AcceptCountLabel == "low" && this.player1RejectCountLabel == "high" && this.player1ElaborationLabel == "low" && this.player2OfferCountLabel == "high" && this.player2AcceptCountLabel == "low" && this.player2RejectCountLabel == "high" & this.player2ElaborationLabel == "low"){
 			this.player1CollaboratorType = "Isolated"; 
-		}else if(this.player1OfferCountLabel == "high" && this.player1AcceptCountLabel == "low" && this.player1RejectCountLabel == "high" ){
+		}else if(this.player1OfferCountLabel == "high" && this.player1AcceptCountLabel == "low" && this.player1RejectCountLabel == "high" && this.player1ElaborationLabel == "low" ){
 			this.player1CollaboratorType = "Dominant";
 			console.log("P1 Accept label :"+ this.player1AcceptCountLabel)
-		}else if(this.player1OfferCountLabel == "high" && this.player1RejectCountLabel == "low"){
+		}else if(this.player1RejectCountLabel == "low" && this.player1InfluenceLabel == "high"){
 			console.log("In Leader If statement"); 
 			this.player1CollaboratorType = "Leader"; 
 
-		}else if(this.player1OfferCountLabel == "low" && this.player1AcceptCountLabel == "high" && this.player1RejectCountLabel == "low"){
+		}else if(this.player1AcceptCountLabel == "high" && this.player1RejectCountLabel == "low" && this.player1InfluenceLabel == "low"){
 			this.player1CollaboratorType = "Follower"; 
 		}else{
 			console.log("Nothing found, reverting back to" + this.player1CollaboratorType); 
 		}
 
-		if(this.player1OfferCountLabel == "high" && this.player1AcceptCountLabel == "low" && this.player1RejectCountLabel == "high" && this.player2OfferCountLabel == "high" && this.player2AcceptCountLabel == "low" && this.player2RejectCountLabel == "high"){
+		if(this.player1OfferCountLabel == "high" && this.player1AcceptCountLabel == "low" && this.player1RejectCountLabel == "high" && this.player1ElaborationLabel == "low" && this.player2OfferCountLabel == "high" && this.player2AcceptCountLabel == "low" && this.player2RejectCountLabel == "high" && this.player2ElaborationLabel == "low"){
 			this.player2CollaboratorType = "Isolated"; 
-		}else if(this.player2OfferCountLabel == "high" && this.player2AcceptCountLabel == "low" && this.player2RejectCountLabel == "high"){
+		}else if(this.player2OfferCountLabel == "high" && this.player2AcceptCountLabel == "low" && this.player2RejectCountLabel == "high" && this.player2ElaborationLabel == "low"){
 			this.player2CollaboratorType = "Dominant";
-		}else if(this.player2OfferCountLabel == "high" && this.player2RejectCountLabel == "low"){
+		}else if(this.player2RejectCountLabel == "low" && this.player2InfluenceLabel == "high"){
 			this.player2CollaboratorType = "Leader"; 
-		}else if(this.player2OfferCountLabel == "low" && this.player2AcceptCountLabel == "high" && this.player2RejectCountLabel == "low"){
+		}else if(this.player2AcceptCountLabel == "high" && this.player2RejectCountLabel == "low" && this.player2InfluenceLabel == "low"){
 			this.player2CollaboratorType = "Follower"; 
 		}
 
@@ -431,6 +437,44 @@ class Analyzer{
 		}
 
 		//console.log("P1 rejct Count label: " + this.player1RejectCountLabel + "P2 Reject count label: " + this.player2RejectCountLabel); 
+		
+
+		var p1LineCount = 0; 
+		var p2LineCount = 0; 
+
+		for(var i = 0; i<this.turns.length; i++){
+			if(this.turns[i].activePlayer == this.player1){
+				p1LineCount += this.turns[i].currentLines.length; 
+			}else{
+				p2LineCount += this.turns[i].currentLines.length;
+			}
+		}
+
+		var p1ElaborationPercent = (this.player1OverallCoupling / p1LineCount) * 100; 
+		var p2ElaborationPercent = (this.player2OverallCoupling / p2LineCount) * 100; 
+
+		if(p1ElaborationPercent >= 40){
+			this.player1ElaborationLabel = "high"; 
+		}else{
+			this.player1ElaborationLabel = "low"; 
+		}
+		if(p2ElaborationPercent >=40){
+			this.player2ElaborationLabel = "high"; 
+		}else{
+			this.player2ElaborationLabel = "low"; 
+		}
+
+
+		if(this.player1NumCoupledLines > this.player2NumCoupledLines){
+			this.player1InfluenceLabel = "high"; 
+			this.player2InfluenceLabel = "low";
+		}else{
+			this.player1InfluenceLabel = "low"; 
+			this.player2InfluenceLabel = "high";
+		}
+		console.log("Player 1 Influence Label: " + this.player1InfluenceLabel); 
+		console.log("Player 2 Influence Label: " + this.player2InfluenceLabel); 
+
 	this.collaborationDynamicLabels = {
 		"player1OfferCountLabel": this.player1OfferCountLabel, 
 		"player2OfferCountLabel": this.player2OfferCountLabel,
@@ -457,11 +501,12 @@ class Analyzer{
 		//console.log("equalDrawing: " + equalDrawing); 
 
 
-		if(this.player1AcceptCountLabel == "low" & this.player2AcceptCountLabel == "low"){
+
+		if(this.player1AcceptCountLabel == "low" & this.player2AcceptCountLabel == "low" && this.player1ElaborationLabel == "low" && this.player2ElaborationLabel == "low"){
 			this.collaborationType =  "Isolated"; 
 		}else if( equalDrawing && this.player1AcceptCountLabel == "high" && this.player2AcceptCountLabel == "high" ){
 			this.collaborationType = "Balanced"; 
-		}else if((this.player1OfferCountLabel == "high" && this.player1RejectCountLabel == "high") || (this.player2OfferCountLabel == "high" && this.player2RejectCountLabel == "high")){
+		}else if((this.player1OfferCountLabel == "high" && this.player1RejectCountLabel == "high" && this.player1ElaborationLabel == "low") || (this.player2OfferCountLabel == "high" && this.player2RejectCountLabel == "high" && this.player2ElaborationLabel == "low")){
 			this.collaborationType = "Dominant"; 
 		}else if ((this.player1OfferCountLabel == "high" && this.player2AcceptCountLabel == "high") || (this.player2OfferCountLabel=="high" && this.player1AcceptCountLabel == "high" )){
 			this.collaborationType = "Follow the Leader"; 

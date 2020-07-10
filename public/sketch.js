@@ -27,6 +27,7 @@
   socket.on('mouseup', mouseUpEvent); 
   socket.on('statMode', onStatModeEvent); 
 
+
   var lineCounter = 0; 
   var lines = new Array(); 
   var previousLines = new Array(); 
@@ -38,6 +39,10 @@
   console.log("Player1 Name: " + player1.name + "Player2 Name: " + player2.name); 
   var analyzer = new Analyzer(player1,player2, lines); 
   var display = new Display(analyzer); 
+
+  var dashboard = new Dashboard(); 
+  dashboard.updateCharts();
+
 
   var turnStart = 0; 
   var turnEnd = 0; 
@@ -189,6 +194,7 @@
     firstTurn = false; 
     updateCollaborationScore();
     display.display();
+    dashboard.updateCharts();
 
   }
 

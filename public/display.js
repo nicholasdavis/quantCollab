@@ -94,8 +94,12 @@ class Display{
 
 
 		  document.getElementById("collaborationType2").innerHTML = "Collaboration Type: " + this.analyzer.collaborationType;
+		  document.getElementById("player1CollaboratorType2").innerHTML = this.analyzer.player1.name+ "'s"+" Collaborator Type: " + this.analyzer.player1CollaboratorType;
+		  document.getElementById("player2CollaboratorType2").innerHTML = this.analyzer.player2.name+"'s"+" Collaborator Type: " + this.analyzer.player2CollaboratorType;
+
+/*
+
 		  document.getElementById("player1Name4").innerHTML = "Player: " + this.analyzer.player1.name;
-		  document.getElementById("player1CollaboratorType2").innerHTML = "Collaborator Type: " + this.analyzer.player1CollaboratorType;
 		  document.getElementById("player1Offers2").innerHTML = "New Ideas Generated: " + this.analyzer.player1Offers;
 		  document.getElementById("player1OffersAccepted2").innerHTML = "New Ideas Accepted: " + this.analyzer.player1InitiateCouplingCount;
 		  document.getElementById("player1OffersRejected2").innerHTML = "New Ideas Rejected: " + this.analyzer.player1Rejections;
@@ -107,7 +111,6 @@ class Display{
 		  //document.getElementById("player1NewIdeasAddedTo2").innerHTML = "Lines Adding to New Ideas: " + this.analyzer.player1LinesAddedToNewIdeas;
 
 		  document.getElementById("player2Name4").innerHTML = "Player: " + this.analyzer.player2.name;
-		  document.getElementById("player2CollaboratorType2").innerHTML = "Collaborator Type: " + this.analyzer.player2CollaboratorType;
 		  document.getElementById("player2Offers2").innerHTML = "New Ideas Generated: " + this.analyzer.player2Offers;
 		  document.getElementById("player2OffersAccepted2").innerHTML = "New Ideas Accepted: " + this.analyzer.player2InitiateCouplingCount;
 		  document.getElementById("player2OffersRejected2").innerHTML = "New Ideas Rejected: " + this.analyzer.player2Rejections;
@@ -117,7 +120,7 @@ class Display{
 		  //document.getElementById("player2CoupledTurnBasedOnOffer2").innerHTML = "Turns Dedicated to Your Ideas: " + this.analyzer.player2CoupledStartedCount;
 		  //document.getElementById("player2AvgCoupleFounded2").innerHTML = "Turns Per Idea: " + this.analyzer.player2CoupleFoundedAvgDepth.toFixed(1);
 		  //document.getElementById("player2NewIdeasAddedTo2").innerHTML = "Lines Adding to New Ideas: " + this.analyzer.player2LinesAddedToNewIdeas;
-
+*/
 
 
 		  if(this.analyzer.drawingType == "multiLine"){
