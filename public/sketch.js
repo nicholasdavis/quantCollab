@@ -233,6 +233,7 @@
       document.getElementById('endTurnButton').style.display ="inline";
     }
     updateCollaborationScore();
+    dashboard.updateCharts(); 
 
 
   }
