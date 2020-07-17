@@ -45,12 +45,12 @@
 #player1Name4{font-size:16px; text-decoration: underline;}
 #player2Name4{font-size:16px; text-decoration: underline;}
 #statButton{display:none;}
-#newIdeaChartContainer{width: 150px; height: 180px;display:inline-block;}
-#ideasAcceptedChartContainer{width: 150px; height: 180px;display:inline-block;}
-#ideasRejectedChartContainer{width: 150px; height: 180px;display:inline-block;}
-#elaborationCountChartContainer{width: 150px; height: 180px;display:inline-block;}
-#depthIdeasChartContainer{width: 150px; height: 180px;display:inline-block;}
-#influenceIdeasChartContainer{width: 150px; height: 180px;display:inline-block;}
+#newIdeaChartContainer{width: 49%; height: 150px;display:inline-block;}
+#ideasAcceptedChartContainer{width: 49%; height: 150px;display:inline-block;}
+#ideasRejectedChartContainer{width: 49%; height: 150px;display:inline-block;}
+#elaborationCountChartContainer{width: 49%; height: 150px;display:inline-block;}
+#depthIdeasChartContainer{width: 49%; height: 150px;display:inline-block;}
+#influenceIdeasChartContainer{width: 49%; height: 150px;display:inline-block;}
 
 
 
@@ -365,12 +365,12 @@
        <canvas id="canvas" style="border:1px solid #000000;"></canvas>
       </div>
       <div id="dashboard">
-      <p class="dashIntro">(Score reflects the equality of new ideas and percent of idea acceptances.)</p>
+      <p class="dashIntro">(Score reflects the equality of new ideas, percent of idea acceptances, and elaboration count.)</p>
       <b class="dashText" id="collaborationType2">Collaboration Type</b></br>
       <b class="dashText" id="player1CollaboratorType2">Collaborator Type:</b></br>
       <b class="dashText" id="player2CollaboratorType2">Collaborator Type:</b></br>
         <div id = "newIdeaChartContainer">
-          <canvas id="newIdeasChart" width="120" height="120"></canvas>
+          <canvas id="newIdeasChart" ></canvas>
         </div>
         <div id = "ideasAcceptedChartContainer">
           <canvas id="ideasAcceptedChart" width="100" height="100"></canvas>

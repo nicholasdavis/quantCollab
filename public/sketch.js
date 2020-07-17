@@ -40,8 +40,10 @@
   var analyzer = new Analyzer(player1,player2, lines); 
   var display = new Display(analyzer); 
 
+  //dashboard.scaleCharts();
   var dashboard = new Dashboard(); 
   dashboard.updateCharts();
+
 
 
   var turnStart = 0; 
@@ -379,6 +381,7 @@ var yOffset = $("#headerContainer").outerHeight();
     if(analyzer.turns.length >= 1){
       displayLines(); 
     }
+    dashboard.updateCharts();
   }
 
 //})();

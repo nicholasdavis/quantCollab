@@ -21,6 +21,7 @@ class Analyzer{
 		this.statTime; 
 		this.statCount; 
 		this.percentCoupled = 0; 
+		this.elaborationPercent = 0; 
 		this.collaborationDynamicLabels; 
 		this.collaborationType = ""; 
 		this.collaborationScore = 0; 
@@ -103,15 +104,15 @@ class Analyzer{
 		this.calculateOffers(); 
 		this.calculateCoupleFoundedAvgDepth(); 
 		this.calculateStructuralCouplingCount(); 
-		this.calculateOfferCountLabels(); 
 		this.calculateCollaborationType(); 
 		this.calculateNumCoupledLines(); 
 		this.calculateCollaboratorType(); 
 		this.calculateLinesAddedToNewIdeas(); 
 		this.calculateLinesPerIdea(); 
-		this.calculateCollaborationScore(); 
 		this.calculateClampRate();
 		this.calculateOverallCoupling(); 
+		this.calculateOfferCountLabels(); 
+		this.calculateCollaborationScore(); 
 		this.calculateStateRecord();
 		this.calculateRejections(); 
 		console.log("Analyzer activated"); 
@@ -232,7 +233,7 @@ class Analyzer{
 
 		offerRatio = 1-(Math.abs(this.player1Offers - this.player2Offers)/(this.player1Offers + this.player2Offers)); 
 		acceptRatio = (this.player1InitiateCouplingCount + this.player2InitiateCouplingCount)/(this.player1Offers + this.player2Offers); 
-		this.collaborationScore = ((offerRatio + acceptRatio)/2) * 100; 
+		this.collaborationScore = ((offerRatio * 100) + (acceptRatio * 100)+ this.elaborationPercent)/3; 
 		console.log("Collaboration Score: " + this.collaborationScore)
 	}
 
@@ -395,6 +396,8 @@ class Analyzer{
 	}
 		this.player1OverallCoupling = p1Coupled; 
 		this.player2OverallCoupling = p2Coupled; 
+		console.log("Player1 Overall Coupling: " + this.player1OverallCoupling); 
+		console.log("Player2 Overall Coupling: " + this.player2OverallCoupling); 
 
 	}
 
@@ -478,8 +481,18 @@ class Analyzer{
 			}
 		}
 
+		console.log("p1LineCount: " + p1LineCount); 
+		console.log("p2LineCount: " + p2LineCount); 
+
+		console.log("Player1 Overall coupling spot 2: " + this.player1OverallCoupling); 
+		console.log("Player2 Overall coupling spot 2: " + this.player2OverallCoupling); 
+
+
 		var p1ElaborationPercent = (this.player1OverallCoupling / p1LineCount) * 100; 
 		var p2ElaborationPercent = (this.player2OverallCoupling / p2LineCount) * 100; 
+
+		console.log("p1ElaborationPercent" + p1ElaborationPercent); 
+		console.log("p2ElaborationPercent" + p2ElaborationPercent); 
 
 		if(p1ElaborationPercent >= 40){
 			this.player1ElaborationLabel = "high"; 
@@ -492,6 +505,15 @@ class Analyzer{
 			this.player2ElaborationLabel = "low"; 
 		}
 
+		var elaborationPercent = (p1ElaborationPercent + p2ElaborationPercent)/2
+		if(elaborationPercent > 75){
+			this.elaborationPercent = 100; 
+		}else if(elaborationPercent < 75){
+			this.elaborationPercent = elaborationPercent * (1/.75); 
+		}
+
+		console.log("Elaboration Percent: " + this.elaborationPercent); 
+		console.log("Raw Elaboration Percent: " + elaborationPercent); 
 
 		if(this.player1NumCoupledLines > this.player2NumCoupledLines){
 			this.player1InfluenceLabel = "high"; 
@@ -500,8 +522,8 @@ class Analyzer{
 			this.player1InfluenceLabel = "low"; 
 			this.player2InfluenceLabel = "high";
 		}
-		console.log("Player 1 Influence Label: " + this.player1InfluenceLabel); 
-		console.log("Player 2 Influence Label: " + this.player2InfluenceLabel); 
+		//console.log("Player 1 Influence Label: " + this.player1InfluenceLabel); 
+		//console.log("Player 2 Influence Label: " + this.player2InfluenceLabel); 
 
 	this.collaborationDynamicLabels = {
 		"player1OfferCountLabel": this.player1OfferCountLabel, 
@@ -654,7 +676,7 @@ class Analyzer{
 		}
 		this.player1Rejections = p1Rejection; 
 		this.player2Rejections = p2Rejection; 
-		console.log("p1Rejections: " + this.player1Rejections + "p2Rejections:" + this.player2Rejections); 
+		//console.log("p1Rejections: " + this.player1Rejections + "p2Rejections:" + this.player2Rejections); 
 	}
 
 	calculateCoupledStartCount(){

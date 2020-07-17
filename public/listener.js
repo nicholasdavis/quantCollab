@@ -1,4 +1,10 @@
 
+  
+ 
+
+
+
+
   var p1ClampRecord = new Array(); 
   var p2ClampRecord = new Array(); 
 
@@ -76,7 +82,7 @@
       inactivePlayer: inactivePlayer.name
     }
     //var stringPlayer = JSON.stringify(players);
-    console.log("Players.active Player: " + players.activePlayer.name + "Players.inactivePlayer: " + players.inactivePlayer.name); 
+    //console.log("Players.active Player: " + players.activePlayer.name + "Players.inactivePlayer: " + players.inactivePlayer.name); 
     socket.emit('endTurn', players); 
 
 
