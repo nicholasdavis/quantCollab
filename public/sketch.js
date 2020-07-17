@@ -196,6 +196,7 @@
     firstTurn = false; 
     updateCollaborationScore();
     display.display();
+    dashboard.destroyCharts();
     dashboard.updateCharts();
 
   }

@@ -1,4 +1,12 @@
 class Dashboard{
+	constructor(){
+		this.newIdeasChart; 
+		this.ideasAcceptedChart; 
+		this.ideasRejectedChart; 
+		this.elaborationCountChart; 
+		this.depthIdeasChart; 
+		this.influenceIdeasChart; 
+	}
 	
 
 scaleCharts(){
@@ -40,12 +48,21 @@ scaleCharts(){
   chart6.height = chart6.offsetHeight;
 }
 
+destroyCharts(){
+	this.newIdeasChart.destroy(); 
+	this.ideasAcceptedChart.destroy(); 
+	this.ideasRejectedChart.destroy(); 
+	this.elaborationCountChart.destroy(); 
+	this.depthIdeasChart.destroy(); 
+	this.influenceIdeasChart.destroy(); 
+
+}
 updateCharts(){
 console.log("Updating charts"); 
 this.scaleCharts();
 
 var ctx = document.getElementById('newIdeasChart').getContext('2d');
-var newIdeasGeneratedChart = new Chart(ctx, {
+this.newIdeasChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [player1.name, player2.name],
@@ -105,7 +122,7 @@ var newIdeasGeneratedChart = new Chart(ctx, {
 
 
 var ctx = document.getElementById('ideasAcceptedChart').getContext('2d');
-var ideasAcceptedChart = new Chart(ctx, {
+this.ideasAcceptedChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [player1.name, player2.name],
@@ -166,7 +183,7 @@ var ideasAcceptedChart = new Chart(ctx, {
 
 
 var ctx = document.getElementById('ideasRejectedChart').getContext('2d');
-var ideasRejectedChart = new Chart(ctx, {
+this.ideasRejectedChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [player1.name, player2.name],
@@ -225,7 +242,7 @@ var ideasRejectedChart = new Chart(ctx, {
 });
 
 var ctx = document.getElementById('elaborationCountChart').getContext('2d');
-var elaborationCountChart = new Chart(ctx, {
+this.elaborationCountChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [player1.name, player2.name],
@@ -285,7 +302,7 @@ var elaborationCountChart = new Chart(ctx, {
 
 
 var ctx = document.getElementById('depthIdeasChart').getContext('2d');
-var depthIdeasChart = new Chart(ctx, {
+this.depthIdeasChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [player1.name, player2.name],
@@ -345,7 +362,7 @@ var depthIdeasChart = new Chart(ctx, {
 
 
 var ctx = document.getElementById('influenceIdeasChart').getContext('2d');
-var influenceIdeasChart = new Chart(ctx, {
+this.influenceIdeasChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [player1.name, player2.name],
