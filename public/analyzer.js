@@ -453,7 +453,7 @@ class Analyzer{
 		if(p1RejectPercent == 0){
 			this.player1RejectCountLabel = "low"; 
 		}
-		else if(p1RejectPercent >= 50){
+		else if(p1RejectPercent > 50){
 			this.player1RejectCountLabel = "high"; 
 		}else{
 			this.player1RejectCountLabel = "low"; 
@@ -461,7 +461,7 @@ class Analyzer{
 		if(p2RejectPercent == 0){
 			this.player2RejectCountLabel = "low"; 
 		}
-		else if(p2RejectPercent >= 50){
+		else if(p2RejectPercent > 50){
 			this.player2RejectCountLabel = "high"; 
 		}else{
 			this.player2RejectCountLabel = "low"; 
