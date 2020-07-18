@@ -417,12 +417,12 @@ class Analyzer{
 
 		//console.log("p1OfferPercent: " + p1OfferPercent + " p2OfferPercent: " + p2OfferPercent); 
 
-		if(p1OfferPercent >= 50){
+		if(p1OfferPercent >= 60){
 			this.player1OfferCountLabel = "high"; 
 		} else {
 			this.player1OfferCountLabel = "low"; 
 		}
-		if(p2OfferPercent >= 50){
+		if(p2OfferPercent >= 60){
 			this.player2OfferCountLabel = "high"; 
 		} else{
 			this.player2OfferCountLabel = "low"; 
@@ -434,12 +434,12 @@ class Analyzer{
 		var p2AcceptPercent = (this.player2InitiateCouplingCount / this.player1Offers) * 100; 
 		//console.log("p1AcceptPercent: " + p1AcceptPercent + " p2AcceptPercent: " + p2AcceptPercent); 
 
-		if(p1AcceptPercent >= 50){
+		if(p1AcceptPercent >= 60){
 			this.player1AcceptCountLabel = "high"; 
 		}else{
 			this.player1AcceptCountLabel = "low"; 
 		}
-		if(p2AcceptPercent >= 50){
+		if(p2AcceptPercent >= 60){
 			this.player2AcceptCountLabel = "high"; 
 		}else{
 			this.player2AcceptCountLabel = "low"; 
@@ -453,7 +453,7 @@ class Analyzer{
 		if(p1RejectPercent == 0){
 			this.player1RejectCountLabel = "low"; 
 		}
-		else if(p1RejectPercent > 50){
+		else if(p1RejectPercent >= 60){
 			this.player1RejectCountLabel = "high"; 
 		}else{
 			this.player1RejectCountLabel = "low"; 
@@ -461,7 +461,7 @@ class Analyzer{
 		if(p2RejectPercent == 0){
 			this.player2RejectCountLabel = "low"; 
 		}
-		else if(p2RejectPercent > 50){
+		else if(p2RejectPercent >= 60){
 			this.player2RejectCountLabel = "high"; 
 		}else{
 			this.player2RejectCountLabel = "low"; 
