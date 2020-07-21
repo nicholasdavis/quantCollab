@@ -153,7 +153,7 @@
   }
 
   function updateCollaborationScore(){
-    document.getElementById("collaborationScoreDisplay").innerHTML = "Collaboration Score: " + analyzer.collaborationScore.toFixed(1) + "%";
+    document.getElementById("collaborationScoreDisplay").innerHTML = "Collaboration Score: " + Math.round(analyzer.collaborationScore) + "%";
   }
 
   function onStatModeEvent(data){
