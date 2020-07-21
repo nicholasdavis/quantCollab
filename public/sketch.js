@@ -93,6 +93,7 @@
         if(showLines == false){
           context.strokeStyle = "black"; 
         }
+        console.log("Drawing First Line")
         context.beginPath();
         context.moveTo(analyzer.turns[i].previousLines[j].points[k].x, analyzer.turns[i].previousLines[j].points[k].y)
         context.lineTo(analyzer.turns[i].previousLines[j].points[k+1].x, analyzer.turns[i].previousLines[j].points[k+1].y);
@@ -113,6 +114,7 @@
           if(showLines == false){
             context.strokeStyle = "black"; 
           }
+          console.log("Drawing other lines"); 
           context.beginPath();
           context.moveTo(analyzer.turns[i].currentLines[j].points[k].x, analyzer.turns[i].currentLines[j].points[k].y)
          context.lineTo(analyzer.turns[i].currentLines[j].points[k+1].x, analyzer.turns[i].currentLines[j].points[k+1].y);
@@ -279,10 +281,10 @@
     var h = canvas.height;
 
     socket.emit('drawing', {
-      x0: x0,
-      y0: y0,
-      x1: x1,
-      y1: y1,
+      x0: x0 / w,
+      y0: y0 / h,
+      x1: x1 / w,
+      y1: y1 / h,
       color: color
     });
     
@@ -355,12 +357,12 @@ var yOffset = $("#headerContainer").outerHeight();
   }
 
   function onDrawingEvent(data){
-    var point = new Point(data.x0 ,data.y0); 
-    lines[lineCounter].points.push(point);
     //console.log("LineCounter: " + lineCounter); 
     var w = canvas.width;
     var h = canvas.height;
-    drawLine(data.x0, data.y0, data.x1, data.y1, data.color);
+    var point = new Point(data.x0 * w,data.y0 * h); 
+    lines[lineCounter].points.push(point);
+    drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
 
 
   }
@@ -379,10 +381,11 @@ var yOffset = $("#headerContainer").outerHeight();
     canvas.height = canvas.offsetHeight;
     console.log("Canvas width = " + canvas.width); 
     console.log("Canvas height = " + canvas.height); 
+    //dashboard.updateCharts();
     if(analyzer.turns.length >= 1){
+      console.log("Calling display lines"); 
       displayLines(); 
     }
-    dashboard.updateCharts();
   }
 
 //})();
