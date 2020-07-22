@@ -238,6 +238,7 @@
       document.getElementById('endTurnButton').style.display ="inline";
     }
     updateCollaborationScore();
+    dashboard.destroyCharts();
     dashboard.updateCharts(); 
 
 
@@ -381,7 +382,8 @@ var yOffset = $("#headerContainer").outerHeight();
     canvas.height = canvas.offsetHeight;
     console.log("Canvas width = " + canvas.width); 
     console.log("Canvas height = " + canvas.height); 
-    //dashboard.updateCharts();
+    dashboard.destroyCharts();
+    dashboard.updateCharts();
     if(analyzer.turns.length >= 1){
       console.log("Calling display lines"); 
       displayLines(); 

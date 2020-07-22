@@ -308,7 +308,7 @@ this.depthIdeasChart = new Chart(ctx, {
         labels: [player1.name, player2.name],
         datasets: [{
             label: 'New Ideas Accepted',
-            data: [analyzer.player1CoupleFoundedAvgDepth.toFixed(1), analyzer.player2CoupleFoundedAvgDepth.toFixed(1)],
+            data: [analyzer.player1LinesPerIdea.toFixed(1), analyzer.player2LinesPerIdea.toFixed(1)],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -345,7 +345,7 @@ this.depthIdeasChart = new Chart(ctx, {
               return tooltipItem.yLabel;
             },
             footer: function(tooltipItems, data) {
-     		 return ["Average turns per", "idea generated"];
+     		 return ["Average lines per", "idea generated"];
    			 }
           }
         },
