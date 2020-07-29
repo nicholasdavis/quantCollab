@@ -240,8 +240,6 @@
     updateCollaborationScore();
     dashboard.destroyCharts();
     dashboard.updateCharts(); 
-
-
   }
 
   function mouseDownEvent (data){
