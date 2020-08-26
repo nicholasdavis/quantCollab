@@ -345,7 +345,7 @@ this.depthIdeasChart = new Chart(ctx, {
               return tooltipItem.yLabel;
             },
             footer: function(tooltipItems, data) {
-     		 return ["Average lines per", "idea generated"];
+     		 return ["Average lines per", "accepted idea"];
    			 }
           }
         },
