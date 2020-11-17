@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <style>
+      body, html {
+        height: 100%;
+      }
+
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+
+    </style>
+    <style type="text/css">
+
+
+#ultraContainer{height:100%; width:100%;}
+#drawingPanel {height:92%; width:100%; font-size: 16px;}
+#drawingCanvas, #dashboard {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12;}
+#drawingCanvas{position: relative;width:75%; height:100%; }
+#dashboard{width:24%;height:100%;}
+#container {height: 100%; width:100%; font-size: 16px;}
+#left2, #right2{display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 16px;}
+#left2{width:45%;}
+#right2{width:45%;}
+#left, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 16px;}
+#left {width: 45%;}
+#right {width: 45%;}
+#header{height: 100%; width:20%;font-size: 20px; padding: 10px;}
+.buttons{float:right; width: 30%; padding:10px;}
+#headerContainer{display:inline-block; height:auto; width: 75%; padding:10px; font-size: 16px;}
+#collabScore{width:24%; display:inline-block; height:auto;}
+#headerLeft, #headerMiddle, #headerRight{display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 16px;}}
+#headerLeft{width:70%;}
+#headerMiddle{width:30%;}
+#collaborationType{font-size: 20px;}
+#collaborationScore{font-size: 20px;}
+#playerName{font-size: 20px; padding-right: 50px}
+#collaborationScoreDisplay{font-size: 20px}
+#player1Name4{font-size:16px; text-decoration: underline;}
+#player2Name4{font-size:16px; text-decoration: underline;}
+#statButton{display:none;}
+#newIdeaChartContainer{position: relative; width: 49%; height: 150px;display:inline-block;}
+#ideasAcceptedChartContainer{position: relative; width: 49%; height: 150px;display:inline-block;}
+#ideasRejectedChartContainer{position: relative; width: 49%; height: 150px;display:inline-block;}
+#elaborationCountChartContainer{position: relative; width: 49%; height: 150px;display:inline-block;}
+#depthIdeasChartContainer{position: relative; width: 49%; height: 150px;display:inline-block;}
+#influenceIdeasChartContainer{position: relative; width: 49%; height: 150px;display:inline-block;}
+
+
+
+
+.dashText{line-height:.7;}
+.dashIntro{line-height:.85;}
+
+.line {
+    fill: none;
+    stroke: #ffab00;
+    stroke-width: 3;
+}
+  
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+/* Style the dots by assigning a fill and stroke */
+.dot {
+    fill: #ffab00;
+    stroke: #fff;
+}
+  
+  .focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+
+</style>
+
+
+
+  </head>
+  <body data-rsssl=1>
+    <script src="lib/jquery-3.5.0.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+
+
+    <div id="ultraContainer">
+    <div id="headerContainer">
+      <input type="checkbox" id="statMode" name="statMode" value="statMode" >
+      <button id="statButton" class="btn btn-primary">Statistics</button>
+      <button id="saveButton" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Start New Session
+</button>
+      <button id="showLinesButton" class="btn btn-primary">Show Lines</button>
+      <button id="endTurnButton" class="btn btn-danger">End Turn</button>
+
+
+      <b id="playerName"> Click start new session to begin</b>
+    </div>
+    <div id="collabScore">
+      <b id="collaborationScoreDisplay"> Collaboration Score:</b>
+    </div>
+
+
+
+<div class="w3-container">
+  
+
+  <div id="id01" class="w3-modal" >
+    <div class="w3-modal-content">
+      <div class="w3-container" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
+        <span id="closeButton" class="w3-button w3-display-topright">&times;</span>
+        <div class="modal-body">
+        <div role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        </li>
+                        <li role="presentation" class="active" ><a href="#collaborationDynamicsTab" aria-controls="colaborationDynamicsTab" role="tab" data-toggle="tab">Collaboration Dynamics</a>
+
+                        </li>
+                        <li role="presentation" ><a href="#ideasTab" aria-controls="ideasTab" role="tab" data-toggle="tab">Ideas</a>
+
+                        </li>
+
+                        <li role="presentation"  ><a href="#interactionDynamicsTab" aria-controls="interactionDynamicsTab" role="tab" data-toggle="tab">Interaction Dynamics</a>
+
+                        </li>
+                        <li role="presentation" ><a href="#uploadTab" aria-controls="uploadTab" role="tab" data-toggle="tab">Player Data</a>
+
+                        </li>
+                        
+                        <li role="presentation"><a href="#interactionTab" aria-controls="browseTab" role="tab" data-toggle="tab">Interaction Couplings</a>
+
+
+                        <li role="presentation"><a id = "chartTab" href="#chartsTab" aria-controls="browseTab" role="tab" data-toggle="tab">Charts</a>
+
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel"  class="tab-pane" id="uploadTab">
+                          <div id = "container">
+                            <div id="left"> 
+                              <b id="player1Name">some text</b>
+                              <p id="player1Lines">some text</p>
+                              <p id="plyaer1AverageLine">some text</p>
+                              <p id="player1AvgTurnTime">some text</p>
+                              <p id="player1AvgDrawingTime">some text</p>
+                              <p id="player1AvgThinkingTime">some text</p>
+                              <p id="player1TotalDrawingTime">some text</p>
+                              <p id="player1TotalThinkingTime">some text</p>
+                              <p id="player1numberNear">some text</p>
+                              <p id="player1numberSimilar">some text</p>
+                              <p id="player1initiateCoupling">some text</p>
+                              <p id="player1Decouplings">some text</p>
+                              <p id="player1PatternInitiate">some text</p>
+                              <p id="player1PatternDecouple">some text</p>
+                              <p id="player1NumFluidLines">some text</p>
+
+
+                            </div>
+                            <div id="right"> 
+                              <b id="player2Name">some text</b>
+                              <p id="player2Lines">some text</p>
+                              <p id="plyaer2AverageLine">some text</p>
+                              <p id="player2AvgTurnTime">some text</p>
+                              <p id="player2AvgDrawingTime">some text</p>
+                              <p id="player2AvgThinkingTime">some text</p>
+                              <p id="player2TotalDrawingTime">some text</p>
+                              <p id="player2TotalThinkingTime">some text</p>
+                              <p id="player2numberNear">some text</p>
+                              <p id="player2numberSimilar">some text</p>
+                              <p id="player2initiateCoupling">some text</p>
+                              <p id="player2Decouplings">some text</p>
+                              <p id="player2PatternInitiate">some text</p>
+                              <p id="player2PatternDecouple">some text</p>
+                              <p id="player2NumFluidLines">some text</p>
+
+                            </div>
+                          </div>
+
+                          
+
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="interactionDynamicsTab">
+                          <b>Collaboration Statistics</b>
+                          <p id ="totalLines">Some text.</p>
+                          <p id ="totalTime">Some text.</p>
+                          <p id ="totalSimilarLines">Some text.</p>
+                          <p id ="totalNearLines">Some text.</p>
+                          <p id ="interactionCoupling">Some text.</p>
+                          <p id ="numStructuralCoupling">Some text.</p>
+                          <p id ="percentCoupled">Some text.</p>
+                          <p id ="avgTurnPerCoupling">Some text.</p>
+                          <p id ="longestCoupling">Some text.</p>
+                          <p id ="avgSimilarPerCoupling">Some text.</p>
+                          <p id ="numberPatterns">Some text.</p>
+                          <p id ="avgTurnPerPattern">Some text.</p>
+                          <p id ="dominantPlayer">Some text.</p>
+                          <p id ="dominantPercent">Some text.</p>
+
+
+
+                        </div>
+                         <div role="tabpanel" class="tab-pane" id="interactionTab">
+                          <p id="interactionText">some text</p>
+                        </div>
+
+
+                        <div role="tabpanel" class="tab-pane active" id="collaborationDynamicsTab">
+                          <b id="collaborationType">some text</b></br>
+                          <b id="collaborationScore">some text</b>
+                          <p >(Score reflects the equality of new ideas and percent of idea acceptances.)</p>
+                        <div id = "container">
+                            <div id="left"> 
+                              <b id="player1Name2">some text</b></br>
+                              <b id="player1CollaboratorType">some text</b></br>
+                              <b id="player1Offers">some text</b>
+                              <p >(Turns far away from partner's last turn)</p>
+                              <b id="player1OffersAccepted">some text</b>
+                              <p >(Turns close to partner's new idea)</p>
+                              <b id="player1OffersRejected">some text</b>
+                              <p >(Turns far from partner's new idea)</p>
+                              <b id="player1ElaborationCount">some text</b>
+                              <p >(Lines close to partner's previous turn)</p>
+
+
+
+
+                            </div>
+                            <div id="right"> 
+                              <b id="player2Name2">some text</b></br>
+                              <b id="player2CollaboratorType">some text</b></br>
+                              <b id="player2Offers">some text</b>
+                              <p >(Turns far away from partner's last turn)</p>
+                              <b id="player2OffersAccepted">some text</b>
+                              <p >(Turns close to partner's new idea)</p>
+                              <b id="player2OffersRejected">some text</b>
+                              <p >(Turns far from partner's new idea)</p>
+                              <b id="player2ElaborationCount">some text</b>
+                              <p >(Lines close to partner's previous turn)</p>
+
+
+                            </div>
+                          </div>
+
+                        </div>
+
+
+                        <div role="tabpanel" class="tab-pane" id="ideasTab">
+                        <div id = "container2">
+                          <div id="left2"> 
+                              <b id="player1Name3">some text</b></br>
+                              <b >Depth of Ideas</b>
+                              <p id="player1AvgCoupleFounded">some text</p>
+                              <p id="player1AvgLinesPerCoupledTurn"></p>
+                              <b >Influence of Ideas</b>
+                              <p id="player1CoupledTurnBasedOnOffer"></p>
+                              <p id="player1CoupledLinesBasedOnOffer"></p>
+                              <p id="player1NewIdeasAddedTo">some text</p>
+                          </div>
+                          <div id = "right2">
+                              <b id="player2Name3">some text</b></br>
+                              <b >Depth of Ideas</b>
+                              <p id="player2AvgCoupleFounded">some text</p>
+                              <p id="player2AvgLinesPerCoupledTurn"></p>
+                              <b >Influence of Ideas</b>
+                              <p id="player2CoupledTurnBasedOnOffer"></p>
+                              <p id="player2CoupledLinesBasedOnOffer"></p>
+                              <p id="player2NewIdeasAddedTo">some text</p>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+                        <div role="tabpanel" class="tab-pane" id="chartsTab">
+                          <div id="distanceChart"></div>
+                          <div id="lineLengthChart"></div>
+                          <div id="intCoupleChart"></div>
+                          <div id="my_dataviz"></div>
+
+                        </div>
+
+
+
+
+                    </div>
+                  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter Session Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="player1NameInput">Player 1 Name:</label>
+              <input type="text" class="form-control" id="player1NameInput" placeholder="Enter player 1 name">
+            </div>
+            <div class="form-group">
+              <label for="player2NameInput">Player 2 Name:</label>
+              <input type="text" class="form-control" id="player2NameInput" aria-describedby="emailHelp"placeholder="Enter player 2 name">
+            </div>
+            <div class="form-group">
+              <label for="sessionIDInput">Session ID:</label>
+              <input type="text" class="form-control" id="sessionIDInput" aria-describedby="emailHelp" placeholder="Session ID">
+            </div>                    
+              <label for="cars">Choose a Drawing Type:</label>
+
+              <select id="drawingTypeInput">
+                <option value="singleLine">Single Line Turns</option>
+                <option value="multiLine">Multi Line Turns</option>
+              </select>
+  
+</body>
+</html>
+
+
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="submitButton" data-dismiss="modal" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <div id= "drawingPanel">
+      <div id ="drawingCanvas">
+       <canvas id="canvas" style="border:1px solid #000000;"></canvas>
+      </div>
+      <div id="dashboard">
+      <p class="dashIntro">(Score reflects the equality of new ideas, percent of idea acceptances, and elaboration count.)</p>
+      <b class="dashText" id="collaborationType2">Collaboration Type</b></br>
+      <b class="dashText" id="player1CollaboratorType2">Collaborator Type:</b></br>
+      <b class="dashText" id="player2CollaboratorType2">Collaborator Type:</b></br>
+        <div id = "newIdeaChartContainer">
+          <canvas id="newIdeasChart" ></canvas>
+        </div>
+        <div id = "ideasAcceptedChartContainer">
+          <canvas id="ideasAcceptedChart" width="100" height="100"></canvas>
+        </div>
+        <div id = "ideasRejectedChartContainer">
+          <canvas id="ideasRejectedChart" width="100" height="100"></canvas>
+        </div>
+        <div id = "elaborationCountChartContainer">
+          <canvas id="elaborationCountChart" width="100" height="100"></canvas>
+        </div>
+        <div id = "depthIdeasChartContainer">
+          <canvas id="depthIdeasChart" width="100" height="100"></canvas>
+        </div>
+        <div id = "influenceIdeasChartContainer">
+          <canvas id="influenceIdeasChart" width="100" height="100"></canvas>
+        </div>
+<!--
+      <b class="dashText" id="player1Name4">Player Name:</b></br>
+      <b class="dashText" id="player1Offers2">New Ideas Generated: 0</b>
+      <p class="dashText">(Turns far away from partner's last turn)</p>
+      <b class="dashText" id="player1OffersAccepted2">New Ideas Accepted: 0</b>
+      <p class="dashText">(Turns close to partner's new idea)</p>
+      <b class="dashText" id="player1OffersRejected2">New Ideas Rejected: 0</b>
+      <p class="dashText">(Turns far from partner's new idea)</p>
+      <b class="dashText" id="player1ElaborationCount2">Elaboration Count: 0</b>
+      <p class="dashText">(Lines close to partner's previous turn)</p>
+      <b class="dashText" id = "player1IdeaDepth">Depth of Ideas: 0</b>
+      <p class="dashText">(Average turns per idea generated)</p>
+      <b class="dashText" id="player1IdeaInfluence">Influence of Ideas: 0</b>
+      <p class="dashText">(Lines based on your ideas)</p>
+
+
+      <b class="dashText" id="player2Name4">Player Name:</b></br>
+      <b class="dashText" id="player2Offers2">New Ideas Generated: 0</b>
+      <p class="dashText">(Turns far away from partner's last turn)</p>
+      <b class="dashText" id="player2OffersAccepted2">New Ideas Accepted: 0</b>
+      <p class="dashText">(Turns close to partner's new idea)</p>
+      <b class="dashText" id="player2OffersRejected2">New Ideas Rejected: 0</b>
+      <p class="dashText">(Turns far from partner's new idea)</p>
+      <b class="dashText" id="player2ElaborationCount2">Elaboration Count: 0</b>
+      <p class="dashText">(Lines close to partner's previous turn)</p>
+      <b class="dashText" id="player2IdeaDepth">Depth of Ideas: 0</b>
+      <p class="dashText">(Average turns per idea generated)</p>
+      <b class="dashText" id="player2IdeaInfluence">Influence of Ideas: 0</b>
+      <p class="dashText">(Lines based on your ideas)</p>
+-->
+      </div>
+    </div>
+  </div>
+
+
+<script src="Chart.js"></script>
+
+
+    <script src="Chart.css"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="charts.js"></script>
+    <script src="interactionCoupling.js"></script>
+    <script src="save.js"></script>
+    <script src="display.js"></script>
+    <script src="turn.js"></script>
+    <script src="analyzer.js"></script>
+    <script src="player.js"></script>
+    <script src="point.js"></script>
+    <script src="line.js"></script>
+    <script src="listener.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="sketch.js"></script>
+
+  </body>
+</html>      
