@@ -382,10 +382,8 @@ var yOffset = $("#headerContainer").outerHeight();
     console.log("Canvas height = " + canvas.height); 
     dashboard.destroyCharts();
     dashboard.updateCharts();
-    if(analyzer.turns.length >= 1){
-      console.log("Calling display lines"); 
-      displayLines(); 
-    }
+    console.log("Calling display lines"); 
+    displayLines(); 
   }
 
 //})();
