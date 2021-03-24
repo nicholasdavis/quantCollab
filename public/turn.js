@@ -19,7 +19,17 @@ class Turn{
 		this.calculateTurnTime(); 
 		this.calculateThinkingTime();
 		this.calculateFluidity();
+		this.drawingLabel; 
+		this.coupled; 
 		//console.log("Turn Start: " + turnStart + "Turn end: " + turnEnd); 
+	}
+
+	setDrawingLabel(label){
+		this.drawingLabel = label; 
+	}
+
+	setCoupled(coupled){
+		this.coupled = coupled;
 	}
 
 	setTurnStart(startTime){

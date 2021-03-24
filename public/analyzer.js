@@ -633,11 +633,11 @@ class Analyzer{
 		var p1Offer = 1; 
 		var p2Offer = 0; 
 		for(var i=0; i<this.turns.length; i++){
-			if(this.turns[i].activePlayer == this.player1 && this.turns[i].proximity == "far"){
+			if(this.turns[i].activePlayer == this.player1 && this.turns[i].coupled == false){
 				p1Offer++; 
 				//console.log("Just Incremented offer: " + p1Offer); 
 			}
-			if (this.turns[i].activePlayer == this.player2 && this.turns[i].proximity == "far"){
+			if (this.turns[i].activePlayer == this.player2 && this.turns[i].coupled == false){
 				p2Offer++; 
 				//console.log("Just Incremented offer: " + p2Offer); 
 			}
@@ -654,19 +654,19 @@ class Analyzer{
 		var p2Rejection = 0; 
 		for(var i=0; i<this.turns.length; i++){
 			if(i == 0){
-				if(this.turns[i].activePlayer == this.player1 && this.turns[i].proximity == "far"){
+				if(this.turns[i].activePlayer == this.player1 && this.turns[i].coupled == false){
 					p1Rejection++; 
 					//console.log("Just Incremented offer: " + p1Offer); 
 				}
-				if (this.turns[i].activePlayer == this.player2 && this.turns[i].proximity == "far"){
+				if (this.turns[i].activePlayer == this.player2 && this.turns[i].coupled == false){
 					p2Rejection++; 
 					//console.log("Just Incremented offer: " + p2Offer); 
 				}
 			}else{
-				if(this.turns[i].activePlayer == this.player1 && this.turns[i].proximity == "far" && this.turns[i-1].proximity =="far"){
+				if(this.turns[i].activePlayer == this.player1 && this.turns[i].coupled == false && this.turns[i-1].coupled ==false){
 					p1Rejection++; 
 				}
-				if(this.turns[i].activePlayer == this.player2 && this.turns[i].proximity == "far" && this.turns[i-1].proximity =="far"){
+				if(this.turns[i].activePlayer == this.player2 && this.turns[i].coupled == false && this.turns[i-1].coupled ==false){
 					p2Rejection++; 
 				}
 
@@ -1061,6 +1061,71 @@ class Analyzer{
 		return longestSequence; 
 	}
 
+
+	calculateInteractions(){
+	if(this.turns.length == 1){
+		if(this.turns[this.turns.length -1].coupled == true){
+			this.interactionSequence = true; 
+			this.interactionChain = new InteractionCoupling(this.player1,this.player2); 
+			//console.log("InteractionChain: " + this.interactionChain.player1); 
+			this.interactionChain.add(this.turns[this.turns.length-1])
+			this.interactionStorage.push(this.interactionChain);
+		}
+	}else if (this.turns.length>1){
+	if(this.interactionSequence == true){
+			//check near near
+			//if near near, push to ineractionChain
+			//else set to false
+			if(this.turns[this.turns.length-1].coupled == true && this.turns[this.turns.length-2].coupled == true){
+			//	console.log("Inside near near if");
+				this.interactionChain.add(this.turns[this.turns.length-1]);
+				this.interactionSequence = true; 
+				//console.log("Just added to the interactionChain. The Current size is: " +this.interactionChain.length);
+			}
+			else{
+				this.interactionSequence = false; 
+			//	console.log('in else, interactionSequence = ' + this.interactionSequence); 
+				//starting a new interactionChain
+				//this.interactionChain = new Array(); 
+				this.interactionChain.setDecoupledBy(this.turns[this.turns.length-1].activePlayer);
+
+			}
+
+			if(this.turns[this.turns.length-1].coupled == false && this.turns[this.turns.length-2].coupled == true){
+				//console.log("Detected a decoupling, adding to player count")
+				if(this.turns[this.turns.length-1].activePlayer == this.player1)
+					this.player1DecoupleCount++; 
+				else this.player2DecoupleCount++; 
+				this.interactionChain.setDecoupledBy(this.turns[this.turns.length-1].activePlayer);
+				//console.log("DecouplePlayer1: " + this.player1DecoupleCount); 
+			}
+				//console.log("Current turn turn proximity" + this.turns[this.turns.length-1].proximity); 
+				//console.log("Last turn proximity" + this.turns[this.turns.length-2].proximity); 
+			}
+		else{
+			//check near
+			//if yes, store old, and create new
+		//	console.log("Inside first elf state interactionSequence false");
+			if(this.turns[this.turns.length-1].coupled == true && this.turns[this.turns.length-2].coupled == false){
+				//start a new intereactionSequence
+				this.interactionSequence = true; 
+				this.interactionChain = new InteractionCoupling(this.player1, this.player2); 
+				//console.log("Inside if near and far1. Interaction Chain: " + this.interactionChain); 
+				this.interactionChain.add(this.turns[this.turns.length-1]);
+				this.interactionStorage.push(this.interactionChain); 
+				//console.log("InteractionStorage: " + this.interactionStorage)
+				//console.log("Inside if near and far. Interaction Chain: " + this.interactionChain); 
+
+		}
+		else 
+			this.interactionSequence = false; 
+		}
+	}
+}
+}
+
+
+/*
 	calculateInteractions(){
 		//console.log("This.turn.length: "+ this.turns.length); 
 
@@ -1073,24 +1138,6 @@ class Analyzer{
 			this.interactionStorage.push(this.interactionChain);
 		}
 	}else if(this.turns.length>1){
-				//console.log("Current turn turn proximity" + this.turns[this.turns.length-1].proximity); 
-				//console.log("Last turn proximity" + this.turns[this.turns.length-2].proximity); 
-/*
-			if(this.turns.length == 2 && this.turns[this.turns.length-1].proximity == "near" && this.turns[this.turns.length-2].proximity == "near"){
-				this.interactionSequence = true; 
-				this.interactionChain = new InteractionCoupling(this.player1,this.player2); 
-				//console.log("InteractionChain: " + this.interactionChain)
-				this.interactionStorage.push(this.interactionChain)
-				/*
-				if(this.turns[this.turns.length-1].inactivePlayer == player1){
-					console.log("Player1Offers: " + this.player1Offers)
-					this.player1Offers++; 
-				}else{
-					this.player2Offers++; 
-					console.log("Player1Offers: " + this.player2Offers)
-				}
-				/
-			}*/
 		if(this.interactionSequence == true){
 			//check near near
 			//if near near, push to ineractionChain
@@ -1189,3 +1236,4 @@ class Analyzer{
 	}
 }
 }
+*/

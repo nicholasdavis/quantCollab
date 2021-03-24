@@ -64,6 +64,7 @@
   endTurnButton.onclick = function(){
     //console.log("In endTurnButton onclick"); 
     
+    //document.getElementById('collabQuestions').style.display='block'; 
 
 /*
     if (activePlayer == player1){
@@ -74,17 +75,40 @@
       activePlayer = player1;
       inactivePlayer = player2;  
     }*/
+    
+
+
+  }
+
+  var submitCollabInfoButton = document.getElementById("submitCollabInfo2"); 
+  submitCollabInfoButton.onclick = function(){
+    //document.getElementById('collabQuestions').style.display='none'; 
+
+
     document.getElementById("playerName").innerHTML = "Player: " + activePlayer.name;
 
+    var drawingLabel = document.getElementById("turnLabel2").value; 
+    var coupled; 
+    if (document.getElementById("yes2").checked)
+      coupled = true; 
+    else 
+      coupled = false; 
+
+    console.log("The drawing label is: "+ drawingLabel + "Coupling:" + coupled); 
 
     var players = {
       activePlayer : activePlayer.name, 
-      inactivePlayer: inactivePlayer.name
+      inactivePlayer: inactivePlayer.name, 
+      coupled: coupled, 
+      drawingLabel: drawingLabel
     }
     //var stringPlayer = JSON.stringify(players);
     //console.log("Players.active Player: " + players.activePlayer.name + "Players.inactivePlayer: " + players.inactivePlayer.name); 
     socket.emit('endTurn', players); 
 
+    document.getElementById("turnLabel2").value = ""; 
+    document.getElementById("yes2").checked = false; 
+    document.getElementById("no2").checked = false; 
 
   }
 

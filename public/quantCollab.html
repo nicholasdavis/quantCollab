@@ -18,7 +18,7 @@
     </style>
     <style type="text/css">
 
-
+#submitCollabInfo{padding: 10px;}
 #ultraContainer{height:100%; width:100%;}
 #drawingPanel {height:92%; width:100%; font-size: 16px;}
 #drawingCanvas, #dashboard {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12;}
@@ -101,7 +101,8 @@
   Start New Session
 </button>
       <button id="showLinesButton" class="btn btn-primary">Show Lines</button>
-      <button id="endTurnButton" class="btn btn-danger">End Turn</button>
+      <button id="endTurnButton" class="btn btn-danger" data-toggle="modal" data-target="#collabQuestions2">End Turn</button>
+
 
 
       <b id="playerName"> Click start new session to begin</b>
@@ -359,7 +360,6 @@
 
 
 
-
     <div id= "drawingPanel">
       <div id ="drawingCanvas">
        <canvas id="canvas" style="border:1px solid #000000;"></canvas>
@@ -418,6 +418,52 @@
       </div>
     </div>
   </div>
+
+
+
+  <div id="collabQuestions" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <h3> Collaboration Report</h3>
+        <p>What did you draw?</p>
+        <input type="text" id="turnLabel" name="turnLabel"><br><br>
+        <p>Did you draw something based on your partner's last turn?</p>
+        <input type="radio" id="yes" name="gender" value="yes">
+         <label for="yes">Yes</label><br>
+        <input type="radio" id="no" name="gender" value="no">
+        <label for="no">No</label><br>
+
+        <button id="submitCollabInfo" class="btn btn-danger" style="float: right;" >Submit</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" id = "collabQuestions2" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Collaboration Report</h5>
+      </div>
+      <div class="modal-body">
+                <p>What did you draw?</p>
+        <input type="text" id="turnLabel2" name="turnLabel"><br><br>
+        <p>Did you draw something based on your partner's last turn?</p>
+        <input type="radio" id="yes2" name="gender" value="yes">
+         <label for="yes">Yes</label><br>
+        <input type="radio" id="no2" name="gender" value="no">
+        <label for="no">No</label><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="submitCollabInfo2" data-toggle="modal" data-target="#collabQuestions2" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 <script src="Chart.js"></script>
